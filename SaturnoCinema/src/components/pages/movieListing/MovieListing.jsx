@@ -1,5 +1,5 @@
 import './movieListing.css'
-import MovieItem from '../movieItem.jsx/MovieItem'
+import MovieItem from '../movieItem/MovieItem'
 
 const MovieListing = ({movies}) => {
     return (
