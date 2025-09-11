@@ -1,14 +1,15 @@
+import {BrowserRouter, Routes, Route, Router} from 'react-router-dom'
 import './App.css'
-import CoverPage from './pages/coverPage/CoverPage'
 import Dashboard from './pages/dashboard/Dashboard'
 
 function App() {
 
   return (
-    <>
-      <CoverPage />
-      <Dashboard/>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Dashboard/>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
