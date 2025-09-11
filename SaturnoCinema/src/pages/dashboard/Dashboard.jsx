@@ -1,4 +1,4 @@
-import MovieListing from "../pages/movieListing/MovieListing"
+import MovieListing from '../movieListing/MovieListing'
 
 
 const Dashboard = () => {

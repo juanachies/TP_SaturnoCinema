@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import Header from '../header/Header';
+import Header from '../../components/header/Header';
 
 const CoverPage = () => {
   return (
