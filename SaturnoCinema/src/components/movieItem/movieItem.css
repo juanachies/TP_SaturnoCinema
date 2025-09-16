@@ -1,0 +1,36 @@
+.movie-card {
+    background-color: #662d2b;
+    border-radius: 8px;
+    border: 3px solid #c25751;
+    color: #dddddd94;
+    width: 15rem;
+    overflow: hidden;
+    text-align: left;
+}
+
+.poster-container{
+    overflow: hidden;
+}
+
+.poster-container img {
+    width: 100%; 
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.movie-card:hover .poster-container img {
+    transform: scale(1.08);
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+h3{
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    color: #709f51;
+    font-weight: bold;
+    height: 4rem;
+}

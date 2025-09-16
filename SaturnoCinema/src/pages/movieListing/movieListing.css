@@ -1,0 +1,10 @@
+.movie-listing{
+    background-color: #783831;
+    padding: 1.5rem;
+}
+
+.movies {
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+}
