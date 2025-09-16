@@ -1,11 +1,14 @@
-import { Button } from 'react-bootstrap';
+
+import Logo from "../logo/Logo";
 
 const Header = () => {
+
     return (
         <>
-            <div>
-                <h4>Saturno</h4>
-                <h5>Cinema</h5>
+            <div style={ {display: "flex", justifyContent:"space-between"} }>
+                <Logo />
+                <h2>menu</h2>
+                {/* <Menu /> */}
             </div>
         </>
     )
