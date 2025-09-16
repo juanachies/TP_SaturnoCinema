@@ -1,4 +1,5 @@
 import MovieListing from '../movieListing/MovieListing'
+import CoverPage from '../coverPage/CoverPage'
 
 
 const Dashboard = () => {
@@ -88,6 +89,7 @@ const Dashboard = () => {
 
     return (
         <div>
+            <CoverPage/>
             <MovieListing movies={movies}/>
         </div>
     )
