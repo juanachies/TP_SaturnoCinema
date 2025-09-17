@@ -1,5 +1,6 @@
 import MovieListing from '../movieListing/MovieListing'
 import CoverPage from '../coverPage/CoverPage'
+import CinemaInfo from '../../components/cinemaInfo/cinemaInfo'
 
 
 const Dashboard = () => {
@@ -91,6 +92,7 @@ const Dashboard = () => {
         <div>
             <CoverPage/>
             <MovieListing movies={movies}/>
+            <CinemaInfo/>
         </div>
     )
 }
