@@ -9,14 +9,14 @@
     justify-content: center;
 }
 
-h1{
+.movie-listing-title{
     color: #c25751;
     font-weight: 3px;
     font-size: 3rem;
     font-weight: 900;
 }
 
-h1::after {
+.movie-listing-title::after {
     content: "";
     display: block;
     width: 90px;

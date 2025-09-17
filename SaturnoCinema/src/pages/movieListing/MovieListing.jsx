@@ -4,7 +4,7 @@ import MovieItem from '../../components/movieItem/MovieItem'
 const MovieListing = ({movies}) => {
     return (
         <div className='movie-listing'>
-            <h1>CARTELERA</h1>
+            <h1 className='movie-listing-title'>CARTELERA</h1>
 
             <div className='movies'>
                 {movies.map((movie, index) => (
