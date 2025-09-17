@@ -1,5 +1,5 @@
 .movie-listing{
-    background-color: #783831;
+    background-color: #662d2b;
     padding: 1.5rem;
 }
 
@@ -7,4 +7,20 @@
     display: flex;
     gap: 5rem;
     justify-content: center;
+}
+
+h1{
+    color: #c25751;
+    font-weight: 3px;
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+h1::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 4px;
+    background-color: #6a944f;
+    margin: 0.5rem auto 0;
 }
