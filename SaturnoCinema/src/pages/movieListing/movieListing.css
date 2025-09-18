@@ -11,8 +11,8 @@
 }
 
 .movie-listing-title{
+    text-align: center;
     color: #c25751;
-    font-weight: 3px;
     font-size: 3rem;
     font-weight: 900;
 }
