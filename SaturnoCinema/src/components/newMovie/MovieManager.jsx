@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NewMovie from "./NewMovie";
 import MovieItem from "../movieItem/MovieItem";
+import { Button, Card, Form, Row, Col } from "react-bootstrap";
 
 const MovieManager = ({ movies }) => {
   const [movieListing, setMovieListing] = useState(movies);
@@ -19,6 +20,9 @@ const MovieManager = ({ movies }) => {
       ))}
     </>
   );
+
+  
 };
+
 
 export default MovieManager;
