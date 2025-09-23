@@ -15,7 +15,7 @@ const MovieItem = ({title, runTime, genre, posterUrl}) => {
                 <h3 className='movie-card-title'>{title}</h3>
                 <p>{genre}</p>
                 <p>Duración: {runTime}</p>
-                <button onClick={handleClick} className='movie-button'>COMPRAR TICKETS</button>
+                <button onClick={handleClick} className='movie-button'>VER MAS</button>
             </div>
         </div>
     )

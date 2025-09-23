@@ -21,13 +21,13 @@ const CinemaInfo = () => {
                 <div className='contacto'>
                     <h4 className='footer-subtitle'>CONTACTO</h4>
                     <p>📍Av. Neón 1985, Local 80-85</p>
-                    <p>📞(555) 80-CINEMA</p>
-                    <p>✉️info@saturnopcinema.com</p>
-                    <p>🕐Lun-Dom: 14:00-02:00</p>
+                    <p>📞 (555) 80-CINEMA</p>
+                    <p>✉️ info@saturnocinema.com</p>
+                    <p>🕐 Lun-Dom: 14:00-02:00</p>
                 </div>
             </div>
             <div className='bottom'>
-                <p>© 2024 Saturnop Cinema. Todos los derechos reservados. ¡Viviendo los 80s desde 1985!</p>
+                <p>© Saturno Cinema. Todos los derechos reservados.</p>
             </div>
             
         </footer>

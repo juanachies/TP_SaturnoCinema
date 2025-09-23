@@ -33,6 +33,10 @@ footer{
 }
 
 
+
+
+
+
 .cinema{
     width: 40rem;
 }
@@ -79,17 +83,29 @@ footer{
     gap: 0.5rem;
 }
 
+.navegacion .footer-subtitle {
+    color: #6680ab;
+}
+
 .navegacion a{
-    
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.navegacion a:hover{
+    filter: brightness(0.7);
 }
 
 
-
-
+.contacto .footer-subtitle {
+    color: #709f51;
+}
 
 
 .bottom{
     text-align: center;
     padding-top: 2rem;
     border-top: 1px solid #c25751;
+    color: #dddddd94;
 }
