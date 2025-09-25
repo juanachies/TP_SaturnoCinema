@@ -1,5 +1,6 @@
 
 import Logo from "../logo/Logo";
+import Menu from "../menu/Menu";
 
 const Header = () => {
 
@@ -7,7 +8,7 @@ const Header = () => {
         <>
             <div style={ {display: "flex", justifyContent:"space-between"} }>
                 <Logo />
-                <h2>menu</h2>
+                <Menu />
                 {/* <Menu /> */}
             </div>
         </>
