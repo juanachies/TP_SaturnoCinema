@@ -1,7 +1,11 @@
-import MovieListing from '../movieListing/MovieListing'
-import CoverPage from '../coverPage/CoverPage'
-import CinemaInfo from '../../components/cinemaInfo/cinemaInfo'
-
+import {Routes, Route} from 'react-router-dom'
+import MovieListing from '../pages/movieListing/MovieListing'
+import CoverPage from '../pages/coverPage/CoverPage'
+import CinemaInfo from '../components/cinemaInfo/cinemaInfo'
+import Login from '../auth/login/Login'
+import Register from '../auth/register/Register'
+import Header from '../components/header/Header'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
 
@@ -88,12 +92,19 @@ const Dashboard = () => {
         }
     ]
 
+    const navigate = useNavigate()
+
     return (
-        <div>
-            <CoverPage/>
-            <MovieListing movies={movies}/>
+        <>
+            <Header/>
+            <Routes>
+                <Route index element={<CoverPage/>} />
+                <Route path='movies' element={<MovieListing movies={movies}/>} />
+                <Route path='login' element={<Login/>} />
+                <Route path='register' element={<Register/>} />
+            </Routes>
             <CinemaInfo/>
-        </div>
+        </>
     )
 }
 

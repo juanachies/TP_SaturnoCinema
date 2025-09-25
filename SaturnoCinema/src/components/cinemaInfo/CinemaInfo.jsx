@@ -1,6 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import './cinemaInfo.css'
+import { Link } from 'react-router-dom'
 
 const CinemaInfo = () => {
+
+    const navigate = useNavigate
+
     return (
         <footer>
             <div className='info'>
@@ -8,15 +13,16 @@ const CinemaInfo = () => {
                     <h3 className="footer-title">SATURNO CINEMA</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut aspernatur cupiditate iste minus. Nobis iure accusamus odit vel vero odio. Autem modi tempora ipsum, quasi sed corrupti dolores aperiam recusandae.</p>
                     <nav>
-                        <a href="">Instagram</a>
-                        <a href="">Facebook</a>
-                        <a href="">Twitter</a>
+                        <a href="https://www.instagram.com/">Instagram</a>
+                        <a href="https://www.facebook.com/">Facebook</a>
+                        <a href="https://x.com/">Twitter</a>
                     </nav>
                 </div>
                 <div className='navegacion'>
                     <h4 className='footer-subtitle'>NAVEGACIÓN</h4>
-                    <a href="">Cartelera</a>
-                    <a href="">Nosotros</a>
+                    <Link to='/'>Inicio</Link>
+                    <Link to='/movies'>Cartelera</Link>
+                    <Link to='/login'>Registrarse</Link>
                 </div>
                 <div className='contacto'>
                     <h4 className='footer-subtitle'>CONTACTO</h4>
