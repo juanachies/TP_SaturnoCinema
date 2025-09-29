@@ -47,7 +47,7 @@ const Register = () => {
                     <label>Teléfono:</label>
                     <input 
                     type="number"
-                    placeholder="+54 9 123 456-7890"
+                    placeholder="1234567890"
                     /> 
                 </div>
             </div>

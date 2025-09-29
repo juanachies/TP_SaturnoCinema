@@ -19,7 +19,7 @@ const Footer = () => {
                     <h4 className='footer-subtitle'>NAVEGACIÓN</h4>
                     <Link to='/'>Inicio</Link>
                     <Link to='/movies'>Cartelera</Link>
-                    <Link to='/login'>Registrarse</Link>
+                    <Link to='/login'>Ingresar</Link>
                 </div>
                 <div className='contacto'>
                     <h4 className='footer-subtitle'>CONTACTO</h4>
