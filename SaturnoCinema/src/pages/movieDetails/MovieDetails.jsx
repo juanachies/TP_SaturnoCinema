@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import NewMovie from '../../components/NewMovie/NewMovie';  
 
 
-const MovieDetails = () => {
+const MovieDetails = ({movie}) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ const MovieDetails = () => {
   const [showNewMovie, setShowNewMovie] = useState(false);
 
   
-  const [movie, setMovie] = useState(null);
+  // const [movie, setMovie] = useState(movie);
 
   
   useEffect(() => {
@@ -40,7 +40,7 @@ const MovieDetails = () => {
 
   
 
-  const { Poster, Title, Director, Year, Runtime, Plot, rating } = movie;
+  const { Poster, Title, Director, Year, Runtime, Plot, rating } = location.state.movie;
 
  
   const starRating = Array.from({ length: 5 }, (_, index) =>
