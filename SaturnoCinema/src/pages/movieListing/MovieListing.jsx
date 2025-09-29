@@ -22,10 +22,11 @@ const MovieListing = ({movies}) => {
                     filteredMovies.map((movie, index) => (
                         <MovieItem
                             key={index}
-                            title={movie.Title}
-                            runTime={movie.Runtime}
-                            genre={movie.Genre}
-                            posterUrl={movie.Poster}
+                            movie={movie}
+                            // title={movie.Title}
+                            // runTime={movie.Runtime}
+                            // genre={movie.Genre}
+                            // posterUrl={movie.Poster}
                         />
                     ))
                 : 'No se encontró la película buscada'
