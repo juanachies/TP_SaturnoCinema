@@ -1,16 +1,17 @@
 import {Routes, Route} from 'react-router-dom'
 import MovieListing from '../pages/movieListing/MovieListing'
 import CoverPage from '../pages/coverPage/CoverPage'
-import CinemaInfo from '../components/cinemaInfo/cinemaInfo'
+import Footer from '../components/footer/Footer'
 import Login from '../auth/login/Login'
 import Register from '../auth/register/Register'
 import Header from '../components/header/Header'
-import { useNavigate } from 'react-router-dom'
+import MovieDetails from '../pages/movieDetails/MovieDetails'
 
 const Dashboard = () => {
 
     const movies =
         [{
+            "id": 0,
             "Title": "Guardians of the Galaxy Vol. 2",
             "Year": "2017",
             "Rated": "PG-13",
@@ -51,6 +52,7 @@ const Dashboard = () => {
             "Response": "True"
         },
         {
+            "id": 0,
             "Title": "Poor Things",
             "Year": "2023",
             "Rated": "R",
@@ -92,8 +94,6 @@ const Dashboard = () => {
         }
     ]
 
-    const navigate = useNavigate()
-
     return (
         <>
             <Header/>
@@ -102,8 +102,9 @@ const Dashboard = () => {
                 <Route path='movies' element={<MovieListing movies={movies}/>} />
                 <Route path='login' element={<Login/>} />
                 <Route path='register' element={<Register/>} />
+                <Route path=':id' element={<MovieDetails/>} />
             </Routes>
-            <CinemaInfo/>
+            <Footer/>
         </>
     )
 }
