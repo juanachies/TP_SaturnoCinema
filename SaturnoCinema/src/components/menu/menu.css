@@ -1,4 +1,16 @@
+a {
+    text-decoration: none;
+    color: #6680AB;
+    font-weight: 700;
+}
+
+.menu-style {
+    display: flex;
+    align-items: center;
+}
+
 .lista-menu {
     display: flex;
     flex-direction: row;
+
 }

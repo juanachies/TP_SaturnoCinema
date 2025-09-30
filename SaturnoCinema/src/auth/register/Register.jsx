@@ -74,9 +74,9 @@ const Register = () => {
                 <p>¿Ya tenés cuenta?</p>
                 <button onClick={() => navigate('/login')}>Ingresar</button>
             </div>
-          
+
         </form>     
-      </div>
+    </div>
         </AuthContainer>
     )
 }

@@ -1,15 +1,15 @@
 
 import Logo from "../logo/Logo";
 import Menu from "../menu/Menu";
+import "./header.css";
 
 const Header = () => {
 
     return (
         <>
-            <div style={ {display: "flex", justifyContent:"space-between"} }>
+            <div className="header-style">
                 <Logo />
                 <Menu />
-                {/* <Menu /> */}
             </div>
         </>
     )
