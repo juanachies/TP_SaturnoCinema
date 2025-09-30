@@ -11,7 +11,7 @@ const Dashboard = () => {
 
     const movies =
         [{
-            "id": 0,
+            "id": 1,
             "Title": "Guardians of the Galaxy Vol. 2",
             "Year": "2017",
             "Rated": "PG-13",
@@ -26,6 +26,7 @@ const Dashboard = () => {
             "Country": "United States",
             "Awards": "Nominated for 1 Oscar. 15 wins & 60 nominations total",
             "Poster": "https://m.media-amazon.com/images/M/MV5BNWE5MGI3MDctMmU5Ni00YzI2LWEzMTQtZGIyZDA5MzQzNDBhXkEyXkFqcGc@._V1_SX300.jpg",
+            rating: 4,
             "Ratings": [
                 {
                 "Source": "Internet Movie Database",
@@ -50,9 +51,10 @@ const Dashboard = () => {
             "Production": "N/A",
             "Website": "N/A",
             "Response": "True"
+            
         },
         {
-            "id": 0,
+            "id": 2,
             "Title": "Poor Things",
             "Year": "2023",
             "Rated": "R",
@@ -67,6 +69,7 @@ const Dashboard = () => {
             "Country": "Ireland, United Kingdom, United States, Hungary",
             "Awards": "Won 4 Oscars. 120 wins & 424 nominations total",
             "Poster": "https://m.media-amazon.com/images/M/MV5BYWU2MjRjZTYtMjVkMS00MTBjLWFiMTAtYmZlYTk1YjkyMWFkXkEyXkFqcGc@._V1_SX300.jpg",
+            rating: 4,
             "Ratings": [
                 {
                 "Source": "Internet Movie Database",
@@ -102,7 +105,7 @@ const Dashboard = () => {
                 <Route path='movies' element={<MovieListing movies={movies}/>} />
                 <Route path='login' element={<Login/>} />
                 <Route path='register' element={<Register/>} />
-                <Route path=':id' element={<MovieDetails/>} />
+                <Route path='movies/:id' element={<MovieDetails />} />
             </Routes>
             <Footer/>
         </>
