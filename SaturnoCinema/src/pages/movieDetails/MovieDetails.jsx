@@ -4,45 +4,31 @@ import { Star, StarFill } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import NewMovie from '../../components/NewMovie/NewMovie';  
 
-
-const MovieDetails = ({movie}) => {
+const MovieDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
- 
+  const [movie, setMovie] = useState(null);
   const [showNewMovie, setShowNewMovie] = useState(false);
 
-  
-  // const [movie, setMovie] = useState(movie);
-
-  
   useEffect(() => {
     if (location.state && location.state.movie) {
       setMovie(location.state.movie);
     }
   }, [location.state]);
 
-  
-  const handleShowNewMovie = () => {
-    setShowNewMovie(!showNewMovie);
-  };
+  if (!movie) return <p>Cargando película...</p>;
 
-  
-  const clickHandle = () => {
-    navigate("/cinema");
-  };
+  const handleShowNewMovie = () => setShowNewMovie(!showNewMovie);
 
-  
+  const clickHandle = () => navigate("/movies");
+
   const handleMovieUpdated = (updatedMovie) => {
     setMovie(updatedMovie);
-    setShowMovieForm(false);
+    setShowNewMovie(false);
   };
 
-  
+  const { Poster, Title, Director, Year, Runtime, Plot, rating = 0 } = movie;
 
-  const { Poster, Title, Director, Year, Runtime, Plot, rating } = location.state.movie;
-
- 
   const starRating = Array.from({ length: 5 }, (_, index) =>
     index < rating ? <StarFill key={index} /> : <Star key={index} />
   );
@@ -65,16 +51,15 @@ const MovieDetails = ({movie}) => {
           </p>
           <Row>
             <Button className="mb-2 me-2" onClick={handleShowNewMovie}>
-              {showNewMovie? "Ocultar formulario" : "Editar película"}
+              {showNewMovie ? "Ocultar formulario" : "Editar película"}
             </Button>
             <Button className="me-2" onClick={clickHandle}>
-              Volver 
+              Volver
             </Button>
           </Row>
         </Card.Body>
       </Card>
 
-      
       {showNewMovie && (
         <NewMovie
           isEditing={true}
