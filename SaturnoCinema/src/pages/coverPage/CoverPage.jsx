@@ -1,10 +1,8 @@
 import { Button } from "react-bootstrap";
-import Header from "../../components/header/Header";
 
 const CoverPage = () => {
   return (
     <div>
-      <Header />
       <h1>Saturno</h1>
       <h2>Cinema</h2>
       <p>Experimenta el cine como en los años 80. Donde cada película es una aventura y cada proyección una experiencia única.</p>
