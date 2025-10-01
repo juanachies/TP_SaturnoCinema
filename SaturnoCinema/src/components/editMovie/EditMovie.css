@@ -1,0 +1,45 @@
+.edit-movie-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.edit-movie-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.edit-movie-card {
+  background-color: #dc3545;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  transform: translateY(-50px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.edit-movie-overlay.show .edit-movie-card {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.edit-movie-button {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.edit-movie-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
