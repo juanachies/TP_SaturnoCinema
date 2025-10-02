@@ -53,7 +53,7 @@
     transition: all 0.5s ease;
 }
 .auth-inputs input::placeholder {
-  color: #f19fc7;
+    color: #f19fc7;
 }
 .auth-inputs input:focus {
     outline: none;
@@ -83,6 +83,17 @@
 
 .auth-container button:hover {
     background-color: #a94442;
+}
+
+.auth-checkbox{
+    color: #f19fc7;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.errors{
+    color: rgb(176, 9, 9);
 }
 
 .go-register{

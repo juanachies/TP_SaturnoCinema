@@ -1,0 +1,100 @@
+
+.movie-details-page {
+  background: linear-gradient(135deg, #3a1c1c, #5a2d2d);
+  min-height: 100vh;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+.movie-details-card {
+  background-color: #5a2d2d;
+  color: #f2f2f2;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0; 
+  transform: translateY(30px);
+}
+
+.movie-details-card:hover {
+  transform: scale(1.02);
+}
+
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.movie-details-card img {
+  object-fit: cover;
+  border-bottom: 4px solid #a94444;
+  transition: transform 0.5s ease;
+}
+
+.movie-details-card img:hover {
+  transform: scale(1.05);
+}
+
+
+.movie-details-card .card-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffb347; 
+}
+
+
+.movie-details-card .card-subtitle {
+  font-size: 1rem;
+  color: #d1d1d1;
+}
+
+
+.movie-details-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #e6e6e6;
+}
+
+
+.movie-details-card .mb-2 svg {
+  color: #ffdd57; 
+  font-size: 1.3rem;
+  margin-right: 3px;
+}
+
+
+.movie-details-card .badge {
+  background-color: #ff6347 !important;
+  font-size: 0.9rem;
+  padding: 0.5em 1em;
+  border-radius: 12px;
+}
+
+
+.movie-details-card .btn {
+  background-color: #a94444;
+  border: none;
+  border-radius: 12px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.movie-details-card .btn:hover {
+  background-color: #cc5c5c;
+  transform: translateY(-2px);
+}
+
+
+.movie-details-card .btn:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
