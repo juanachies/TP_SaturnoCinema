@@ -35,8 +35,6 @@ footer{
 
 
 
-
-
 .cinema{
     width: 40rem;
 }
@@ -50,7 +48,7 @@ footer{
     padding: 0.4rem 1rem;
     border: 2px solid;
     border-radius: 20px;
-    font-weight: bold;
+    font-weight: normal;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -91,6 +89,7 @@ footer{
     text-decoration: none;
     color: inherit;
     transition: all 0.3s ease;
+    font-weight: normal;
 }
 
 .navegacion a:hover{

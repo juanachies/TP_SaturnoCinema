@@ -1,4 +1,4 @@
-import Movies from "../models/Movies";
+import Movies from "../models/Movies.js";
 
 export const findMovies = async (req, res) => {
     const movies = await Movies.findAll();
@@ -13,7 +13,7 @@ export const findMovie = async (req, res) => {
     if (!movie)
         return res.status(404).send({message: 'Movie not found'});
 
-    res.json(book)
+    res.json(movie)
 }
 
 

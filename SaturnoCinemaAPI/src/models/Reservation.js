@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../db";
+import { sequelize } from "../db.js";
 
 const Reservation = sequelize.define('reservation', {
     id: {
@@ -24,3 +24,5 @@ const Reservation = sequelize.define('reservation', {
         allowNull: false
     } 
 }, {timestamps:false})
+
+export default Reservation
