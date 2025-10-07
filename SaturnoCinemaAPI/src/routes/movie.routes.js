@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { createMovie, findMovie, findMovies, deleteMovie, updateMovie } from '../services/movie.services';
+import { createMovie, findMovie, findMovies, deleteMovie, updateMovie } from '../services/movie.services.js';
 
 const router = Router();
 
