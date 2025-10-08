@@ -1,5 +1,4 @@
 import { useLocation, useNavigate } from "react-router";
-import { Badge, Button, Card, Row } from "react-bootstrap";
 import { Star, StarFill } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import EditMovie from "../../components/editMovie/editMovie";
@@ -26,7 +25,7 @@ const MovieDetails = () => {
     setShowEdit(false);
   };
 
-  const { Poster, Title, Director, Year, Runtime, Plot, rating = 0 } = movie;
+  const { Poster, Title, Director, Year, Runtime, Plot, rating = 0, Genre } = movie;
 
   const starRating = Array.from({ length: 5 }, (_, index) =>
     index < rating ? <StarFill key={index} /> : <Star key={index} />
@@ -34,27 +33,40 @@ const MovieDetails = () => {
 
   return (
     <>
+      
       <div className="movie-details-page">
-        <Card className="movie-details-card my-3 w-50 mx-auto shadow">
-          <Card.Img height={500} variant="top" src={Poster} />
-          <Card.Body>
-            <Card.Title>{Title}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
-              {Director} ({Year})
-            </Card.Subtitle>
-            <div className="mb-2">{starRating}</div>
-            <Badge bg="info" className="mb-3">
-              {Runtime} minutos
-            </Badge>
-            <p>
-              <b>Sinopsis:</b> {Plot}
-            </p>
-            <Row className="gap-2">
-              <Button onClick={() => setShowEdit(true)}>Editar Película</Button>
-              <Button onClick={clickHandle}>Volver</Button>
-            </Row>
-          </Card.Body>
-        </Card>
+        <h1>{Title}</h1>
+        <div className="movie-details-body">
+          <img src={Poster} alt="Poster de la pelicula" />
+          <div className="movie-info">
+            <div className="info-item">
+              <p className="mini-title">Director</p>
+              <p>{Director}</p>
+            </div>
+            <div className="info-item">
+              <p className="mini-title">Año</p>
+              <p>{Year}</p>
+            </div>
+            <div className="info-item">
+              <p className="mini-title">Duración</p>
+              <p>{Runtime} minutos</p>
+            </div>
+            <div className="info-item">
+              <p className="mini-title">Rating</p>
+              <div>{starRating}</div>
+            </div>
+            <div className="info-item">
+              <p className="mini-title">Géneros</p>
+              <p>{Genre}</p>
+            </div>
+            <div className="sinopsis">
+              <h2>Sinopsis</h2>
+              <p>{Plot}</p>
+            </div>
+            <button className="details-button" onClick={() => setShowEdit(true)}>Editar Película</button>
+            <button className="details-button" onClick={clickHandle}>Volver</button>
+          </div>
+        </div>
       </div>
 
       <EditMovie 
