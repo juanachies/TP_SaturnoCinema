@@ -25,7 +25,7 @@ const MovieDetails = () => {
     setShowEdit(false);
   };
 
-  const { Poster, Title, Director, Year, Runtime, Plot, rating = 0, Genre } = movie;
+  const { imageUrl, title, director, year, runtime, plot, rating = 0, genre } = movie;
 
   const starRating = Array.from({ length: 5 }, (_, index) =>
     index < rating ? <StarFill key={index} /> : <Star key={index} />
@@ -35,21 +35,21 @@ const MovieDetails = () => {
     <>
       
       <div className="movie-details-page">
-        <h1>{Title}</h1>
+        <h1>{title}</h1>
         <div className="movie-details-body">
-          <img src={Poster} alt="Poster de la pelicula" />
+          <img src={imageUrl} alt="Poster de la pelicula" />
           <div className="movie-info">
             <div className="info-item">
               <p className="mini-title">Director</p>
-              <p>{Director}</p>
+              <p>{director}</p>
             </div>
             <div className="info-item">
               <p className="mini-title">Año</p>
-              <p>{Year}</p>
+              <p>{year}</p>
             </div>
             <div className="info-item">
               <p className="mini-title">Duración</p>
-              <p>{Runtime} minutos</p>
+              <p>{runtime} minutos</p>
             </div>
             <div className="info-item">
               <p className="mini-title">Rating</p>
@@ -57,11 +57,11 @@ const MovieDetails = () => {
             </div>
             <div className="info-item">
               <p className="mini-title">Géneros</p>
-              <p>{Genre}</p>
+              <p>{genre}</p>
             </div>
             <div className="sinopsis">
               <h2>Sinopsis</h2>
-              <p>{Plot}</p>
+              <p>{plot}</p>
             </div>
             <button className="details-button" onClick={() => setShowEdit(true)}>Editar Película</button>
             <button className="details-button" onClick={clickHandle}>Volver</button>

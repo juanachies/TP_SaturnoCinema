@@ -28,3 +28,18 @@
     background-color: #6a944f;
     margin: 0.5rem auto 0;
 }
+
+.add-button{
+    background-color: #731c18;
+    color: #f19ec4;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    border: none;
+    width: 20rem;
+    transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+    background-color: #5b1713;
+}

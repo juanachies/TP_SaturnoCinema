@@ -44,3 +44,19 @@
 .movie-button:hover {
     background-color: #a94442;
 }
+
+.delete-button{
+    background-color: #731c18;
+    margin-top: 0.8rem;
+    color: #f19ec4;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    border: none;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #5b1713;
+}
