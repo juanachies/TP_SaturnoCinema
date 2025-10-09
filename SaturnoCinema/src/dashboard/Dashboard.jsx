@@ -6,6 +6,7 @@ import Login from '../auth/login/Login'
 import Register from '../auth/register/Register'
 import Header from '../components/header/Header'
 import MovieDetails from '../pages/movieDetails/MovieDetails'
+import Contact from '../pages/contacto/contactForm'
 
 const Dashboard = () => {
 
