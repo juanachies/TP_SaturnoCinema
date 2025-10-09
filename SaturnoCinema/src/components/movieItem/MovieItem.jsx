@@ -20,7 +20,7 @@ const MovieItem = ({ movie }) => {
         <button onClick={handleClick} className='movie-button'>
           VER MÁS
         </button>
-        <button className='delete-button'>
+        <button className='movie-button'>
           ELIMINAR
         </button>
       </div>
