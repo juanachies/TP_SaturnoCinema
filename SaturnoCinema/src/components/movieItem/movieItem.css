@@ -31,7 +31,6 @@
 }
 
 .movie-button{
-    background-color: #c25751;
     color: #f19ec4;
     font-weight: 500;
     padding: 0.3rem 0.8rem;
@@ -39,8 +38,21 @@
     border: none;
     width: 100%;
     transition: background-color 0.3s ease;
+    margin-top: 0.5rem;
 }
 
-.movie-button:hover {
+.movie-button:nth-of-type(1){
+    background-color: #c25751;
+}
+
+.movie-button:nth-of-type(2){
+    background-color: #731c18;
+}
+
+.movie-button:nth-of-type(1):hover {
     background-color: #a94442;
+}
+
+.movie-button:nth-of-type(2):hover {
+    background-color: #5b1713;
 }

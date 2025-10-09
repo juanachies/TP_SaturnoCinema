@@ -11,14 +11,17 @@ const MovieItem = ({ movie }) => {
   return (
     <div className='movie-card'>
       <div className='poster-container'>
-        <img src={movie.Poster} alt={`poster de ${movie.Title}`} />
+        <img src={movie.imageUrl} alt={`poster de ${movie.title}`} />
       </div>
       <div className='container'>
-        <h3 className='movie-card-title'>{movie.Title}</h3>
-        <p>{movie.Genre}</p>
-        <p>Duración: {movie.Runtime}</p>
+        <h3 className='movie-card-title'>{movie.title}</h3>
+        <p>{movie.genre}</p>
+        <p>Duración: {movie.runtime}</p>
         <button onClick={handleClick} className='movie-button'>
           VER MÁS
+        </button>
+        <button className='movie-button'>
+          ELIMINAR
         </button>
       </div>
     </div>
