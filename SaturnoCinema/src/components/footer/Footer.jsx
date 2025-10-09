@@ -20,6 +20,7 @@ const Footer = () => {
                     <Link to='/'>Inicio</Link>
                     <Link to='/movies'>Cartelera</Link>
                     <Link to='/login'>Ingresar</Link>
+                    <Link to='/contacto' >Contacto</Link>
                 </div>
                 <div className='contacto'>
                     <h4 className='footer-subtitle'>CONTACTO</h4>

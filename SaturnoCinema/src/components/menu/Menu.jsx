@@ -6,10 +6,8 @@ const Menu = () => {
         <div className='menu-style'>
             <ul className='lista-menu'>
                 <li><Link to="/movies">CARTELERA</Link></li>
-                <li><Link to="/horarios">HORARIOS</Link></li>
-                <li><Link to="/nosotros">NOSOTROS</Link></li>
+                <li><Link to="/login">INGRESAR</Link></li>
                 <li><Link to="/contacto">CONTACTO</Link></li>
-
             </ul>
         </div>
     )
