@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import AuthContainer from "../authContainer/AuthContainer"
 import { useState } from "react"
 import { ValidateRegister } from "../Validations"
+const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 const Register = () => {
 
@@ -11,6 +12,7 @@ const Register = () => {
         name: '',
         surname: '',
         email: '',
+        birthdate: '',
         telephone: '',
         password: '',
         confPassword: '',
@@ -33,8 +35,20 @@ const Register = () => {
         const validationErrors = ValidateRegister(formData);
         setErrors(validationErrors)
 
-         if (Object.keys(validationErrors).length === 0) {
-            console.log("Formulario válido, enviar al backend:", formData)
+        if (Object.keys(validationErrors).length === 0) {
+            fetch(`${baseUrl}/register`, {
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                method: 'POST',
+                body: JSON.stringify(formData)
+            })
+                .then(res => res.json())
+                .then(() => {
+                    alert('Usuario creado exitosamente'); //despues successToast
+                    navigate('/login')
+                })
+                .catch((err) => console.log(err))
         }
     }
 
