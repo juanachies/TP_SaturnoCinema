@@ -1,10 +1,10 @@
-import User from "../models/User"
+import User from "../models/User.js"
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
-import { validateLoginUser } from "../helpers/validations"
+import { validateLoginUser } from "../helpers/validations.js"
 
 export const loginUser = async (req, res) => {
-    const result = validateLoginUser(requestAnimationFrame.body)
+    const result = validateLoginUser(req.body)
 
     if(result.error) {
         return res.status(400).send({message: result.message})
@@ -30,5 +30,5 @@ export const loginUser = async (req, res) => {
 
     const token = jwt.sign({email}, secretKey, {expiresIn: '1h'});
 
-    return res.json(token)
+    return res.status(200).json({token})
 }
