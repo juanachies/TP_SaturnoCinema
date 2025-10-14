@@ -2,7 +2,7 @@ import User from "../models/User.js"
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import { validateLoginUser, validateRegisterUser } from "../helpers/validations.js"
-
+const SECRET_KEY = process.env.JWT_SECRET;
 
 export const loginUser = async (req, res) => {
     const result = validateLoginUser(req.body)
@@ -27,11 +27,15 @@ export const loginUser = async (req, res) => {
     if (!comparison)
         return res.status(401).send({message: 'Email y/o contraseña incorrecta'})
 
-    const secretKey = 'movies';
+    const token = jwt.sign(
+        { id: user.id, email: user.email, type: user.type }, 
+        SECRET_KEY, 
+        {expiresIn: '1h'});
 
-    const token = jwt.sign({email}, secretKey, {expiresIn: '1h'});
-
-    return res.status(200).json({token})
+    return res.status(200).json({
+        user: user,
+        token
+    });
 }
 
 
@@ -66,7 +70,16 @@ export const registerUser = async (req, res) => {
         password: hashedPassword
     });
 
-    res.json(newUser.id);
+    const token = jwt.sign(
+        { id: newUser.id, email: newUser.email, type: newUser.type },
+        SECRET_KEY,
+        { expiresIn: '1h' }
+    );
+
+    res.json({
+        user: newUser,
+        token
+    });
 }
 
 

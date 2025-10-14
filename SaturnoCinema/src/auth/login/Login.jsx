@@ -38,15 +38,17 @@ const Login = () => {
         .then(res => {
           if (!res.ok) {
             return res.json().then(errorData => {
-            throw new Error(errorData.message || 'Credenciales incorrectas');
-          });
-        }
-        return res.json();
+              throw new Error(errorData.message || 'Credenciales incorrectas');
+            });
+          }
+          return res.json();
         })
-        .then(() => { 
+        .then((data) => { 
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+
           alert('Login exitoso'); 
-          // token
-          //navigate('/home');
+          navigate('/');
         })
         .catch((err) => {
           console.log(err);

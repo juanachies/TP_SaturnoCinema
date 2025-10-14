@@ -46,9 +46,16 @@ const Register = () => {
                 body: JSON.stringify(userData)
             })
                 .then(res => res.json())
-                .then(() => {
-                    alert('Usuario creado exitosamente'); //despues successToast
-                    navigate('/login')
+                .then((data) => {
+                    alert('Usuario creado exitosamente');
+
+                    if (data.token) {
+                        localStorage.setItem("token", data.token);
+                        localStorage.setItem("user", JSON.stringify(data.user));
+                        navigate("/home");
+                    } else {
+                        navigate("/login");
+                    }
                 })
                 .catch((err) => console.log(err))
         }

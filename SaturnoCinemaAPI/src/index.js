@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { PORT } from "./config.js";
 import express from 'express';
 import movieRoutes from './routes/movie.routes.js'
