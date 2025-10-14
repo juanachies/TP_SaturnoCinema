@@ -36,12 +36,14 @@ const Register = () => {
         setErrors(validationErrors)
 
         if (Object.keys(validationErrors).length === 0) {
+            const {confPassword, terminos, ...userData} = formData;
+
             fetch(`${baseUrl}/register`, {
                 headers: {
                     'Content-type': 'application/json',
                 },
                 method: 'POST',
-                body: JSON.stringify(formData)
+                body: JSON.stringify(userData)
             })
                 .then(res => res.json())
                 .then(() => {
