@@ -4,6 +4,7 @@ const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 const ModifyUser = ({user, onClose}) => {
 
+    const token = localStorage.getItem("token");
     const [type, setType] = useState(user.type);
 
     const handleSubmit = async (e) => {
@@ -11,7 +12,10 @@ const ModifyUser = ({user, onClose}) => {
         try {
         const res = await fetch(`${baseUrl}/users/${user.id}`, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`,
+            },
             body: JSON.stringify({ type }),
         });
 

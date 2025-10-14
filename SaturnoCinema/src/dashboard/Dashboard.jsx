@@ -30,18 +30,27 @@ const Dashboard = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`${baseUrl}/users`)
+        const token = localStorage.getItem('token');
+
+        fetch(`${baseUrl}/users`, {
+            method: 'GET',
+            headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` // 👈 el token va acá
+            }
+        })
             .then((res) => {
-                if (!res.ok){
-                    throw new Error('Error al obtener los usuarios');
-                }
-                return res.json()
+            if (!res.ok) {
+                throw new Error('Error al obtener los usuarios');
+            }
+            return res.json();
             })
             .then((data) => {
-                setUsers(data)
+            setUsers(data);
             })
-            .catch((err) => console.log(err))
-    }, [])
+            .catch((err) => console.log(err));
+    }, []);
+
 
     return (
         <>
