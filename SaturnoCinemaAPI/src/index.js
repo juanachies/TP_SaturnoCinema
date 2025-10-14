@@ -1,6 +1,7 @@
 import { PORT } from "./config.js";
 import express from 'express';
 import movieRoutes from './routes/movie.routes.js'
+import authRoutes from './routes/auth.routes.js'
 import { sequelize } from "./db.js";
 
 const app = express()
@@ -16,6 +17,7 @@ try{
     })
 
     app.use(movieRoutes)
+    app.use(authRoutes)
     app.listen(PORT)
     
     await sequelize.sync();
@@ -23,5 +25,5 @@ try{
     console.log(`Server listening on port ${PORT}`)
 
 } catch (error){
-    console.log('There was an error on initialization')
+    console.log('There was an error on initialization:', error)
 }
