@@ -5,12 +5,14 @@ import "./logo.css"
 function Logo() {
     return (
         <div className="logo-style">
-            <Link to="/"><img src={logo} alt="Logo Saturno" /></Link>
+            <Link to="/">
+                <img src={logo} alt="Logo Saturno" />
+            </Link>
             <div>
                 <h3 className="titulo-logo">Saturno</h3>
                 <h6 className="subtitulo-logo">CINEMA</h6>
             </div>
-            
+
         </div>
     )
 }
