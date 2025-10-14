@@ -6,12 +6,14 @@ import Login from '../auth/login/Login'
 import Register from '../auth/register/Register'
 import Header from '../components/header/Header'
 import MovieDetails from '../pages/movieDetails/MovieDetails'
+import UsersGuide from '../pages/usersGuide/UsersGuide'
 import { useState, useEffect } from 'react'
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 const Dashboard = () => {
 
     const [movies, setMovies] = useState([])
+    const [users, setUsers] = useState([])
 
     useEffect(() => {
         fetch(`${baseUrl}/movies`)
@@ -27,6 +29,20 @@ const Dashboard = () => {
             .catch((err) => console.log(err))
     }, [])
 
+    useEffect(() => {
+        fetch(`${baseUrl}/users`)
+            .then((res) => {
+                if (!res.ok){
+                    throw new Error('Error al obtener los usuarios');
+                }
+                return res.json()
+            })
+            .then((data) => {
+                setUsers(data)
+            })
+            .catch((err) => console.log(err))
+    }, [])
+
     return (
         <>
             <Header/>
@@ -36,6 +52,7 @@ const Dashboard = () => {
                 <Route path='login' element={<Login/>} />
                 <Route path='register' element={<Register/>} />
                 <Route path='movies/:id' element={<MovieDetails />} />
+                <Route path='users' element={<UsersGuide users={users} />} />
             </Routes>
             <Footer/>
         </>

@@ -1,10 +1,12 @@
 import {Router} from 'express';
-import { registerUser } from '../services/register.services.js';
-import { loginUser } from '../services/login.services.js';
+import { registerUser, loginUser, findUsers, updateUser, deleteUser } from '../services/auth.services.js';
 
 const router = Router()
 
 router.post('/register', registerUser);
 router.post('/login', loginUser);
+router.get('/users', findUsers);
+router.put('/users/:id', updateUser);
+router.delete('/users/:id', deleteUser);
 
 export default router;

@@ -1,0 +1,40 @@
+.user{
+    border-radius: 8px;
+    border: 2px solid #c25751;
+    color: #dddddd94;
+    width: 20rem;
+    padding: 1rem;
+}
+
+.user h3{
+    font-size: 1.5rem;
+}
+
+.user img{
+    height: 1.5rem;
+    width: auto;
+    padding-right: 0.8rem;
+}
+
+.user div{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.user button{
+    width: 40%;
+    background-color: #731c18;
+    color: #f19ec4;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    border: none;
+    transition: background-color 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.user button:hover{
+    background-color: #5b1713;
+}

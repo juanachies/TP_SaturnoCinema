@@ -30,9 +30,9 @@ const MovieListing = ({movies}) => {
             
             <div className='movies'>
                 {filteredMovies.length > 0 ?
-                    filteredMovies.map((movie, index) => (
+                    filteredMovies.map((movie) => (
                         <MovieItem
-                            key={index}
+                            key={movie.id}
                             movie={movie}
                         />
                     ))
