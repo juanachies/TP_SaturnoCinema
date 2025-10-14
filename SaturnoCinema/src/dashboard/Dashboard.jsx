@@ -6,9 +6,11 @@ import Login from '../auth/login/Login'
 import Register from '../auth/register/Register'
 import Header from '../components/header/Header'
 import MovieDetails from '../pages/movieDetails/MovieDetails'
+import Contact from '../pages/contacto/contactForm'
 import UsersGuide from '../pages/usersGuide/UsersGuide'
 import { useState, useEffect } from 'react'
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
+
 
 const Dashboard = () => {
 
@@ -52,6 +54,7 @@ const Dashboard = () => {
                 <Route path='login' element={<Login/>} />
                 <Route path='register' element={<Register/>} />
                 <Route path='movies/:id' element={<MovieDetails />} />
+                <Route path='contacto' element={<Contact />} />
                 <Route path='users' element={<UsersGuide users={users} />} />
             </Routes>
             <Footer/>
