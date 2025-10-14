@@ -1,0 +1,35 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #4c1d1a;
+    border: 2px solid #c25751;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 450px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+}
+
+.actions button {
+    width: 12rem;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 12px;
+}
