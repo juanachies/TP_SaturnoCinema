@@ -40,8 +40,8 @@ const Movies = sequelize.define('movies', {
         allowNull: true
     },
     hours: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: DataTypes.JSON,
+        allowNull: true, // cambiar despues a false
     }
 }, {timestamps: false});
 
