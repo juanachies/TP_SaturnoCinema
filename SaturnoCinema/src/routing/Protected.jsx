@@ -5,13 +5,11 @@ const Protected = ({children, allowedTypes}) => {
     const user = JSON.parse(localStorage.getItem("user"));
     const userType = user?.type
 
-    const navigate = useNavigate()
-
     if (!token){
         return <Navigate to='/login' replace />
     }
 
-    if (allowedRoles && !allowedRoles.includes(user?.role)) {
+    if (allowedTypes && !allowedTypes.includes(userType)) {
         return <Navigate to="/" />;
     }
 

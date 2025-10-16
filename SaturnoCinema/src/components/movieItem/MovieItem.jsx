@@ -2,6 +2,8 @@ import './movieItem.css';
 import { useNavigate } from 'react-router-dom';
 
 const MovieItem = ({ movie }) => {
+  const userType = JSON.parse(localStorage.getItem("user"))?.type
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -20,9 +22,12 @@ const MovieItem = ({ movie }) => {
         <button onClick={handleClick} className='movie-button'>
           VER MÁS
         </button>
-        <button className='movie-button'>
-          ELIMINAR
-        </button>
+        {userType != 0 &&
+          <button className='movie-button'>
+            ELIMINAR
+          </button>
+        }
+        
       </div>
     </div>
   );
