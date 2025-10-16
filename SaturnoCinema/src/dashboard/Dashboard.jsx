@@ -9,6 +9,8 @@ import MovieDetails from '../pages/movieDetails/MovieDetails'
 import Contact from '../pages/contacto/contactForm'
 import UsersGuide from '../pages/usersGuide/UsersGuide'
 import { useState, useEffect } from 'react'
+import "./dashboard.css";
+
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 
@@ -55,10 +57,10 @@ const Dashboard = () => {
 
 
     return (
-        <>
-            <Header/>
+        <div className="dashboard-layout">
+            <Header className='header' />
             <Routes>
-                <Route index element={<CoverPage/>} />
+                <Route index element={<CoverPage className='coverPage'/>} />
                 <Route path='movies' element={<MovieListing movies={movies}/>} />
                 <Route path='login' element={<Login/>} />
                 <Route path='register' element={<Register/>} />
@@ -66,8 +68,8 @@ const Dashboard = () => {
                 <Route path='contacto' element={<Contact />} />
                 <Route path='users' element={<UsersGuide users={users} />} />
             </Routes>
-            <Footer/>
-        </>
+            <Footer className='footer'/>
+        </div>
     )
 }
 

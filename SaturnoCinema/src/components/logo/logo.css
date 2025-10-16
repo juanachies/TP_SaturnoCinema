@@ -1,11 +1,12 @@
 img {
-    width: 25%;
+    width: 150px;
     object-fit: contain;
 }
 
 .logo-style {
     display: flex;
     justify-content: start;
+    gap: 5rem;
 }
 
 .titulo-logo {
