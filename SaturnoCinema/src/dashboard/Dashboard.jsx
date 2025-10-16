@@ -36,7 +36,7 @@ const Dashboard = () => {
             method: 'GET',
             headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` // 👈 el token va acá
+            'Authorization': `Bearer ${token}`
             }
         })
             .then((res) => {
