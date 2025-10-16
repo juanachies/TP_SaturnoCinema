@@ -11,7 +11,11 @@ const Protected = ({children, allowedTypes}) => {
         return <Navigate to='/login' replace />
     }
 
+    if (allowedRoles && !allowedRoles.includes(user?.role)) {
+        return <Navigate to="/" />;
+    }
 
+    return children;
 }
 
 export default Protected
