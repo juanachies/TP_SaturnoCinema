@@ -5,6 +5,8 @@ import EditMovie from "../../components/editMovie/editMovie";
 import "./MovieDetails.css";
 
 const MovieDetails = () => {
+  const userType = JSON.parse(localStorage.getItem("user"))?.type
+
   const location = useLocation();
   const navigate = useNavigate();
   const [showEdit, setShowEdit] = useState(false);
@@ -63,8 +65,12 @@ const MovieDetails = () => {
               <h2>Sinopsis</h2>
               <p>{plot}</p>
             </div>
-            <button className="details-button" onClick={() => setShowEdit(true)}>Editar Película</button>
+
             <button className="details-button" onClick={clickHandle}>Volver</button>
+            {userType != 0 && 
+              <button className="details-button" onClick={() => setShowEdit(true)}>Editar Película</button>
+            }
+            
           </div>
         </div>
       </div>
