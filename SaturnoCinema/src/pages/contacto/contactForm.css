@@ -1,0 +1,124 @@
+.contact{
+    background-color: #662d2b;
+    margin: 0;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-container{
+    padding: 2.5rem 3rem;
+    margin: 1rem;
+    background-color: #200c0b;
+    color: #f19fc7;
+    border: 2px solid #c25751;
+    border-radius: 15px;
+    width: 35rem;
+}
+
+.contact-container h2{
+    font-size: 1.5rem;
+    color: #c25751;
+    width: 100%;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #c25751;
+    text-align: center;
+}
+
+.contact-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+.contact-inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-inputs input{
+    border-radius: 10px;
+    border: 2px solid #7d3a34;
+    background-color: #4c1d1a;
+    padding: 0.2rem 1rem;
+    transition: all 0.5s ease;
+}
+.contact-inputs input::placeholder {
+    color: #f19fc7;
+}
+.contact-inputs input:focus {
+    outline: none;
+    box-shadow: 0 0 8px #7d3a34;
+    border-color: #7d3a34;
+}
+
+.contact-inputs textarea{
+    border-radius: 10px;
+    border: 2px solid #7d3a34;
+    background-color: #4c1d1a;
+    padding: 0.2rem 1rem;
+    transition: all 0.5s ease;
+}
+.contact-inputs textarea::placeholder {
+    color: #f19fc7;
+}
+.contact-inputs textarea:focus {
+    outline: none;
+    box-shadow: 0 0 8px #7d3a34;
+    border-color: #7d3a34;
+}
+
+.contact-row{
+    display: flex;
+    gap: 1rem;
+}
+
+.contact-row .contact-inputs {
+  flex: 1;
+}
+
+.contact-container button{
+    background-color: #c25751;
+    color: #f19ec4;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    border: none;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.contact-container button:hover {
+    background-color: #a94442;
+}
+
+.contact-checkbox{
+    color: #f19fc7;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.errors{
+    color: rgb(176, 9, 9);
+}
+
+.submit{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit p {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.submit button{
+    flex-grow: 1;
+}

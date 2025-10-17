@@ -1,0 +1,17 @@
+.dashboard-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header,
+.footer {
+    flex: 0 0 20%;
+    /* 20% header y 20% footer */
+}
+
+.coverPage {
+    flex: 1 0 60%;
+    /* el resto, 60% */
+}
+

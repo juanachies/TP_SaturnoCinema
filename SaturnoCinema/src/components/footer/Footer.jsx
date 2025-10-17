@@ -1,7 +1,9 @@
+import { use } from 'react'
 import './footer.css'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
+    const userType = JSON.parse(localStorage.getItem("user"))?.type
 
     return (
         <footer>
@@ -18,8 +20,12 @@ const Footer = () => {
                 <div className='navegacion'>
                     <h4 className='footer-subtitle'>NAVEGACIÓN</h4>
                     <Link to='/'>Inicio</Link>
+                    {userType === 2 &&
+                        <Link to='/users'>Usuarios</Link>
+                    }
                     <Link to='/movies'>Cartelera</Link>
                     <Link to='/login'>Ingresar</Link>
+                    <Link to='/contacto' >Contacto</Link>
                 </div>
                 <div className='contacto'>
                     <h4 className='footer-subtitle'>CONTACTO</h4>

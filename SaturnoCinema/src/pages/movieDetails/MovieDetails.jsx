@@ -6,6 +6,8 @@ import "./MovieDetails.css";
 import ReserveTickets from "../../components/reserveTickets/reserveTickets";
 
 const MovieDetails = () => {
+  const userType = JSON.parse(localStorage.getItem("user"))?.type
+
   const location = useLocation();
   const navigate = useNavigate();
   const [showEdit, setShowEdit] = useState(false);
@@ -53,7 +55,7 @@ const MovieDetails = () => {
               <p>{year}</p>
             </div>
             <div className="info-item">
-              <p className="mini-title">Duracin</p>
+              <p className="mini-title">Duración</p>
               <p>{runtime} minutos</p>
             </div>
             <div className="info-item">

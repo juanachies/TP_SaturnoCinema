@@ -1,46 +1,33 @@
-.movie-listing{
+.users-guide{
     background-color: #662d2b;
     padding: 1.5rem;
     display: flex;
+    gap: 2rem;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
 }
 
-.movies {
+.users{
     display: flex;
-    gap: 5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
     justify-content: center;
-    margin: 2rem 5rem;
 }
 
-.movie-listing-title{
+.users-title{
     text-align: center;
     color: #c25751;
     font-size: 3rem;
     font-weight: 900;
 }
 
-.movie-listing-title::after {
+.users-title::after {
     content: "";
     display: block;
     width: 90px;
     height: 4px;
     background-color: #6a944f;
     margin: 0.5rem auto 0;
-}
-
-.add-button{
-    background-color: #731c18;
-    color: #f19ec4;
-    font-weight: 500;
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    border: none;
-    width: 20rem;
-    transition: background-color 0.3s ease;
-}
-
-.add-button:hover {
-    background-color: #5b1713;
 }
