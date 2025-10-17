@@ -5,6 +5,7 @@ import MovieSearch from '../../components/movieSearch/MovieSearch'
 import EditMovie from '../../components/editMovie/editMovie'
 
 const MovieListing = ({movies}) => {
+    const userType = JSON.parse(localStorage.getItem("user"))?.type
 
     const [movieSearched, setMovieSearched] = useState('')
     const filteredMovies = movies.filter(movie => 
@@ -40,9 +41,12 @@ const MovieListing = ({movies}) => {
                 }
             </div>
 
-            <button className='add-button' onClick={() => setShowAdd(true)}>
-                AGREGAR PELÍCULA
-            </button>
+            {userType != 0 &&
+                <button className='add-button' onClick={() => setShowAdd(true)}>
+                    AGREGAR PELÍCULA
+                </button>
+            }
+            
 
             <EditMovie
                 show={showAdd}

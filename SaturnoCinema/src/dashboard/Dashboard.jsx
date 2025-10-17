@@ -8,7 +8,10 @@ import Header from '../components/header/Header'
 import MovieDetails from '../pages/movieDetails/MovieDetails'
 import Contact from '../pages/contacto/contactForm'
 import UsersGuide from '../pages/usersGuide/UsersGuide'
+import Protected from '../routing/Protected'
 import { useState, useEffect } from 'react'
+import "./dashboard.css";
+
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 
@@ -32,33 +35,48 @@ const Dashboard = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`${baseUrl}/users`)
+        const token = localStorage.getItem('token');
+
+        fetch(`${baseUrl}/users`, {
+            method: 'GET',
+            headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+            }
+        })
             .then((res) => {
-                if (!res.ok){
-                    throw new Error('Error al obtener los usuarios');
-                }
-                return res.json()
+            if (!res.ok) {
+                throw new Error('Error al obtener los usuarios');
+            }
+            return res.json();
             })
             .then((data) => {
-                setUsers(data)
+            setUsers(data);
             })
-            .catch((err) => console.log(err))
-    }, [])
+            .catch((err) => console.log(err));
+    }, []);
+
 
     return (
-        <>
-            <Header/>
+        <div className="dashboard-layout">
+            <Header className='header' />
             <Routes>
-                <Route index element={<CoverPage/>} />
+                <Route index element={<CoverPage className='coverPage'/>} />
                 <Route path='movies' element={<MovieListing movies={movies}/>} />
                 <Route path='login' element={<Login/>} />
                 <Route path='register' element={<Register/>} />
                 <Route path='movies/:id' element={<MovieDetails />} />
                 <Route path='contacto' element={<Contact />} />
-                <Route path='users' element={<UsersGuide users={users} />} />
+                <Route 
+                    path='users' 
+                    element={
+                        <Protected allowedTypes={[2]} >
+                            <UsersGuide users={users} />
+                        </Protected>
+                        } />
             </Routes>
-            <Footer/>
-        </>
+            <Footer className='footer'/>
+        </div>
     )
 }
 
