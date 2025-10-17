@@ -2,6 +2,7 @@ import { PORT } from "./config.js";
 import express from 'express';
 import movieRoutes from './routes/movie.routes.js'
 import authRoutes from './routes/auth.routes.js'
+import contactRoutes from './routes/contact.routes.js'
 import { sequelize } from "./db.js";
 
 const app = express()
@@ -18,6 +19,7 @@ try{
 
     app.use(movieRoutes)
     app.use(authRoutes)
+    app.use(contactRoutes)
     app.listen(PORT)
     
     await sequelize.sync();
