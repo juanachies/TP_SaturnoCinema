@@ -30,7 +30,7 @@
   opacity: 0;
 }
 
-.new-movie-overlay.show .edit-movie-card {
+.new-movie-overlay.show .new-movie-card {
   transform: translateY(0);
   opacity: 1;
 }

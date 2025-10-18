@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import EditMovie from "../../components/editMovie/editMovie";
 import "./MovieDetails.css";
 import ReserveTickets from "../../components/reserveTickets/reserveTickets";
+const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 const MovieDetails = () => {
   const userType = JSON.parse(localStorage.getItem("user"))?.type
@@ -14,10 +15,10 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [showReserve, setShowReserve] = useState(false);
   useEffect(() => {
-    const movieId = location.state.id;
+    const movieId = location.state.movie.id;
     if (!movieId) return;
 
-    fetch(`http://localhost:5000/movies/${movieId}`)
+    fetch(`${baseUrl}/movies/${movieId}`)
       .then((res) => res.json())
       .then((data) => setMovie(data))
       .catch(() => alert("ERROR cargando la pelicula "));

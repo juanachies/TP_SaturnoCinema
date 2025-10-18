@@ -15,9 +15,14 @@ const MovieListing = ({movies}) => {
     )
 
     const handleMovieAdded = (newMovie) => {
-        setMovie(newMovie)
-        setShowAdd(false)
+        setMovie(newMovie);
+        setShowAdd(false);
+        window.location.reload();   //TODO: cambiar para que obtenga los datos de nuevo, no que refresque
     };
+
+    const handleMovieDeleted = () => {
+        window.location.reload();   //TODO: cambiar para que obtenga los datos de nuevo, no que refresque
+    }
 
 
     return (
@@ -33,6 +38,7 @@ const MovieListing = ({movies}) => {
                             <MovieItem
                                 key={movie.id}
                                 movie={movie}
+                                onMovieDeleted={handleMovieDeleted}
                             />
                         ))
                     : 'No se encontró la película buscada'
@@ -48,7 +54,7 @@ const MovieListing = ({movies}) => {
 
                 <NewMovie
                     show={showAdd}
-                    onClose={() => setShowAdd(true)}
+                    onClose={() => setShowAdd(false)}
                     onMovieAdded={handleMovieAdded}
                 />
         </>
