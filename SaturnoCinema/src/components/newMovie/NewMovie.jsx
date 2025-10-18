@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
+import './newMovie.css';
 
 const NewMovie = ({onMovieAdded, show, onClose}) => {
     const [title, setTitle] = useState("");
@@ -41,39 +42,44 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
     };
 
     try {
+      const token = localStorage.getItem('token');
       const res = await fetch(`${baseUrl}/movies`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(movieData),
-      });
+      }).then(
+        async res => {
+          if (!res.ok) {
+            const error = await res.json();
+            throw new Error(error.message || "Error al agregar película");
+          }
+          const newMovie = await res.json();
+          alert("Pelicula agregada.");
 
-      if (!res.ok) {
-        const error = await res.json();
-        throw new Error(error.menssage || "Error al agregar película");
-      }
-      const newMovie = await res.json();
-      console.log("Pelicula agregada:", newMovie);
-
-      onMovieAdded(movieData);
-      setTitle("");
-      setDirector("");
-      setYear("");
-      setGenre("");
-      setImageUrl("");
-      setPlot("");
+          onMovieAdded(movieData);
+          setTitle("");
+          setDirector("");
+          setYear("");
+          setGenre("");
+          setImageUrl("");
+          setPlot("");
+        }
+      )
     } catch (error) {
       console.error(error.message);
-      alert("No se pudo agregar la pelicula: ", error.menssage);
+      alert("No se pudo agregar la pelicula: ", error.message);
     };
+  };
 
     
     if (!show) return null;
 
     return (
       <div className={`new-movie-overlay ${show ? "show" : ""}`} onClick={onClose}>
-      <Card className="new-movie-card w-50" bg="danger">
+      <Card className="new-movie-card w-50" bg="danger" onClick={e => e.stopPropagation()}>
         <Card.Body>
           <Form className="text-white" onSubmit={handleAddMovie}>
             <Row>
@@ -164,7 +170,6 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
       </Card>
     </div>
     );
-  };
 }
 
   export default NewMovie;
