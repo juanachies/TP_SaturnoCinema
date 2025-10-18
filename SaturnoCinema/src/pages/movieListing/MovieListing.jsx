@@ -20,6 +20,10 @@ const MovieListing = ({movies}) => {
         window.location.reload();   //TODO: cambiar para que obtenga los datos de nuevo, no que refresque
     };
 
+    const handleMovieDeleted = () => {
+        window.location.reload();   //TODO: cambiar para que obtenga los datos de nuevo, no que refresque
+    }
+
 
     return (
         <>
@@ -34,6 +38,7 @@ const MovieListing = ({movies}) => {
                             <MovieItem
                                 key={movie.id}
                                 movie={movie}
+                                onMovieDeleted={handleMovieDeleted}
                             />
                         ))
                     : 'No se encontró la película buscada'
