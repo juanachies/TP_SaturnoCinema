@@ -28,7 +28,7 @@ const MovieDetails = () => {
   };
 
   const { imageUrl, title, director, year, runtime, plot, rating = 0, genre } = movie;
-
+  
   const starRating = Array.from({ length: 5 }, (_, index) =>
     index < rating ? <StarFill key={index} /> : <Star key={index} />
   );

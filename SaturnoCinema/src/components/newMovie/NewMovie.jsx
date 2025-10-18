@@ -1,13 +1,36 @@
 import { useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 
-const NewMovie = ({onMovieAdded}) => {
+const NewMovie = ({onMovieAdded, show, onClose}) => {
     const [title, setTitle] = useState("");
     const [director, setDirector] = useState("");
     const [year, setYear] = useState("");
     const [genre, setGenre] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [plot, setPlot] = useState("");
+
+    const handleAddMovie = (e) => {
+        e.preventDefault();
+        const movieData = {
+            title,
+            director,
+            year,
+            genre,
+            imageUrl,
+            plot,
+        };
+        console.log(movieData);
+        onMovieAdded(movieData);
+        setTitle("");
+        setDirector("");
+        setYear("");
+        setGenre("");
+        setImageUrl("");
+        setPlot("");
+        onClose();
+    };
+
+    if (!show) return null;
 
     const handleChangeTitle = (e) => {
         setTitle(e.target.value);
@@ -27,27 +50,10 @@ const NewMovie = ({onMovieAdded}) => {
     const handleChangePlot = (e) => {
     setPlot(e.target.value);
     };
-    const handleAddMovie = (e) => {
-        e.preventDefault();
-        const movieData = {
-            title,
-            director,
-            year,
-            genre,
-            imageUrl,
-            plot,
-        };
-        console.log(movieData);
-        onMovieAdded(movieData);
-        setTitle("");
-        setDirector("");
-        setYear("");
-        setGenre("");
-        setImageUrl("");
-        setPlot("");
-    };
+    
     return (
-        <Card className="m-4 w-50" bg="danger">
+      <div className={`new-movie-overlay ${show ? "show" : ""}`} onClick={onClose}>
+        <Card className="new-movie-card w-50" bg="danger">
       <Card.Body>
         <Form className="text-white" onSubmit={handleAddMovie}>
           <Row>
@@ -91,7 +97,7 @@ const NewMovie = ({onMovieAdded}) => {
               <Form.Group className="mb-3" controlId="genre">
                 <Form.Label>Género</Form.Label>
                 <Form.Control
-                  type=""
+                  type="text"
                   placeholder="Selecciona el genero"
                   value={genre}
                   onChange={handleChangeGenre}
@@ -128,7 +134,7 @@ const NewMovie = ({onMovieAdded}) => {
               md={3}
               className="d-flex flex-column justify-content-end align-items-end"
             >
-              <Button variant="primary" type="submit">
+              <Button className="new-movie-button" variant="primary" type="submit">
                 Agregar pelicula
               </Button>
             </Col>
@@ -136,6 +142,7 @@ const NewMovie = ({onMovieAdded}) => {
         </Form>
       </Card.Body>
     </Card>
+    </div>
     );
 };
 
