@@ -62,18 +62,18 @@
   transition: background-color 0.3s ease;
 }
 
-.details-button:nth-of-type(1){
+.details-button:nth-of-type(2){
   background-color: #c25751;
 }
 
-.details-button:nth-of-type(2){
+.details-button:nth-of-type(1){
   background-color: #731c18
 }
 
-.details-button:nth-of-type(1):hover {
+.details-button:nth-of-type(2):hover {
   background-color: #a94442;
 }
 
-.details-button:nth-of-type(2):hover {
+.details-button:nth-of-type(1):hover {
   background-color: #5b1713;
 }

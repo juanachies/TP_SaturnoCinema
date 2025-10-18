@@ -1,35 +1,39 @@
-.bg-image {
-    flex: 1;
-    min-height: 30rem;
-    background-image: url("../../img/saturno.png");
-    background-size: cover;
-    /* la imagen cubre todo el espacio */
-    background-position: center;
-    /* centrada */
-    background-repeat: no-repeat;
-    flex-direction: column;
-    justify-content: center;
-    /* centra el texto verticalmente */
-    align-items: center;
-    /* centra horizontalmente */
-    text-align: center;
-    padding: 2rem;
-    position: relative;
-}
-
-.btn-cover {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
+p {
+    color: #f1f1f1;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
 }
 
 .titulo {
-    font-weight: 600;
+    font-weight: 900;
     color: #C25751;
+    font-size: 4rem;
+    margin-top: 3rem;
 }
 
 .subTitulo {
     color: #709F51;
     font-weight: 700;
+}
+
+.bg-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../img/saturno.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 4rem 2rem 6rem;
+    position: relative;
+    width: 100%;
+}
+
+.btn-cover {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
 }
