@@ -3,6 +3,7 @@ import { PORT } from "./config.js";
 import express from 'express';
 import movieRoutes from './routes/movie.routes.js'
 import authRoutes from './routes/auth.routes.js'
+import contactRoutes from './routes/contact.routes.js'
 import reservationRoutes from './routes/reservation.routes.js'
 import { sequelize } from "./db.js";
 
@@ -20,6 +21,7 @@ try{
 
     app.use(movieRoutes)
     app.use(authRoutes)
+    app.use(contactRoutes)
     app.use(reservationRoutes)
     app.listen(PORT)
     
