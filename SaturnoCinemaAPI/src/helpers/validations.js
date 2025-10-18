@@ -92,3 +92,30 @@ export const validateLoginUser = (req) => {
 
     return result;
 }
+
+export const ValidateContact = (req) => {
+    const {nombre, email, mensaje} = req
+
+    const result = {
+        error: false,
+        message: "",
+    };
+
+    if (!validateString(nombre) )
+        return {
+        error: true,
+        message: 'Campo invalido'
+        }
+    else if (!validateEmail(email))
+        return{
+            error: true,
+            message: 'Mail invalido'
+        }
+    
+    else if (!validateString(mensaje))
+        return {
+        error: true,
+        message: 'Mensaje invalido'
+        }
+    return result;
+}

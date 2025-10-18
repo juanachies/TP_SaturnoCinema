@@ -8,6 +8,7 @@ import Header from '../components/header/Header'
 import MovieDetails from '../pages/movieDetails/MovieDetails'
 import Contact from '../pages/contacto/contactForm'
 import UsersGuide from '../pages/usersGuide/UsersGuide'
+import Protected from '../routing/Protected'
 import { useState, useEffect } from 'react'
 import "./dashboard.css";
 
@@ -40,7 +41,7 @@ const Dashboard = () => {
             method: 'GET',
             headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` // el token va acá
+            'Authorization': `Bearer ${token}`
             }
         })
             .then((res) => {
@@ -67,6 +68,13 @@ const Dashboard = () => {
                 <Route path='movies/:id' element={<MovieDetails />} />
                 <Route path='contacto' element={<Contact />} />
                 <Route path='users' element={<UsersGuide users={users} />} />
+                <Route 
+                    path='users' 
+                    element={
+                        <Protected allowedTypes={[2]} >
+                            <UsersGuide users={users} />
+                        </Protected>
+                        } />
             </Routes>
             <Footer className='footer'/>
         </div>

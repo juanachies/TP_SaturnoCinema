@@ -18,7 +18,7 @@ export const findMovie = async (req, res) => {
 
 
 export const createMovie = async(req, res) => {
-    const {title, director, year, genre, runtime, rating, imageUrl, plot} = req.body;
+    const {title, director, year, genre, runtime, rating, imageUrl, plot, hours} = req.body;
 
     if (!title)
         return res.status(400).send({message: 'Title field is required'})
@@ -31,7 +31,8 @@ export const createMovie = async(req, res) => {
         runtime, 
         rating, 
         imageUrl, 
-        plot
+        plot,
+        hours
     })
 
     res.json(newMovie)
@@ -40,7 +41,7 @@ export const createMovie = async(req, res) => {
 
 export const updateMovie = async (req, res) => {
     const {id} = req.params;
-    const {title, director, year, genre, runtime, rating, imageUrl, plot} = req.body;
+    const {title, director, year, genre, runtime, rating, imageUrl, plot, hours} = req.body;
 
     const movie = await Movies.findByPk(id);
 
@@ -55,7 +56,8 @@ export const updateMovie = async (req, res) => {
         runtime, 
         rating, 
         imageUrl, 
-        plot
+        plot,
+        hours
     })
 
     await movie.save();

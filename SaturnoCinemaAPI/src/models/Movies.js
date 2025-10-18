@@ -38,6 +38,10 @@ const Movies = sequelize.define('movies', {
     plot: {
         type: DataTypes.TEXT,
         allowNull: true
+    },
+    hours: {
+        type: DataTypes.JSON,
+        allowNull: true, // cambiar despues a false
     }
 }, {timestamps: false});
 
