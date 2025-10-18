@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
+const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 const NewMovie = ({onMovieAdded, show, onClose}) => {
     const [title, setTitle] = useState("");
@@ -67,28 +68,9 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
       alert("No se pudo agregar la pelicula: ", error.menssage);
     };
 
-
+    
     if (!show) return null;
 
-    const handleChangeTitle = (e) => {
-        setTitle(e.target.value);
-    };
-    const handleChangeDirector = (e) => {
-        setDirector(e.target.value);
-    };
-    const handleChangeYear = (e) => {
-        setYear(e.target.value);
-    }
-    const handleChangeGenre = (e) => {
-    setGenre(e.target.value);
-    };
-    const handleChangeImageUrl = (e) => {
-    setImageUrl(e.target.value);
-    };
-    const handleChangePlot = (e) => {
-    setPlot(e.target.value);
-    };
-    
     return (
       <div className={`new-movie-overlay ${show ? "show" : ""}`} onClick={onClose}>
       <Card className="new-movie-card w-50" bg="danger">
