@@ -5,12 +5,16 @@ footer{
     color: #f19fc7;
 }
 
+p {
+    margin: 0;
+    
+}
 
 .info{
     display: flex;
     flex-wrap: wrap;
     gap: 10rem;
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 .footer-title{
@@ -32,9 +36,6 @@ footer{
     font-weight: 700;
     padding-bottom: 1rem;
 }
-
-
-
 
 .cinema{
     width: 40rem;
@@ -74,8 +75,6 @@ footer{
     filter: brightness(0.7);
 }
 
-
-
 .navegacion{
     display: flex;
     flex-direction: column;
@@ -96,6 +95,7 @@ footer{
 .navegacion a:hover{
     filter: brightness(0.7);
 }
+
 
 
 .contacto .footer-subtitle {

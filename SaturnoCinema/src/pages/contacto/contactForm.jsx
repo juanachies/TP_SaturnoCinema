@@ -11,10 +11,10 @@ const Contact = () => {
     nombre: '',
     email: '',
     mensaje: ''
-    })
-    
+  })
+
   const [errors, setErrors] = useState({})
-  
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -24,40 +24,41 @@ const Contact = () => {
   }
 
   const handleSubmit = (event) => {
-      event.preventDefault();
+    event.preventDefault();
 
-      const validationErrors = ValidateContact(formData)
+    const validationErrors = ValidateContact(formData)
 
-      setErrors(validationErrors)
-  
-      if (Object.keys(validationErrors).length === 0) {
-        fetch(`${baseUrl}/contact`, {
-          method: 'POST', 
-          headers: {
-            'Content-Type': 'application/json', 
-          },
-          body: JSON.stringify(formData) 
-        })
-          .then(res => {
-            if (!res.ok) {
-              return res.json().then(errorData => {
+    setErrors(validationErrors)
+
+    if (Object.keys(validationErrors).length === 0) {
+
+      fetch(`${baseUrl}/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+        .then(res => {
+          if (!res.ok) {
+            return res.json().then(errorData => {
               throw new Error(errorData.message || 'Hubo un error');
             });
           }
           return res.json();
-          })
-          .then(() => { 
-            alert('Mensaje enviado'); 
-          })
-          .catch((err) => {
-            console.log(err);
-            setErrors(prevErrors => ({
-              ...prevErrors,
-              api: err.message 
-            }));
-          });
-        }
-      }
+        })
+        .then(() => {
+          alert('Mensaje enviado');
+        })
+        .catch((err) => {
+          console.log(err);
+          setErrors(prevErrors => ({
+            ...prevErrors,
+            api: err.message,
+          }));
+        });
+    }
+  }
 
   return (
     <section className='contact'>
@@ -65,30 +66,30 @@ const Contact = () => {
         <form onSubmit={handleSubmit}>
           <h2>ENVIANOS UN MENSAJE</h2>
           <div className="contact-inputs">
-              <label>Nombre y apellido</label>
-              <input 
-              type= "text" 
-              placeholder='Ingrese su nombre y apellido' 
+            <label>Nombre y apellido</label>
+            <input
+              type="text"
+              placeholder='Ingrese su nombre y apellido'
               name="nombre"
               value={formData.nombre}
               onChange={handleChange}
-              required/>
+              required />
             {errors.nombre && <p className="errors">{errors.nombre}</p>}
           </div>
           <div className='contact-inputs'>
             <label>Email</label>
             <input
-            type='email' 
-            placeholder='email@ejemplo.com'
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required />
+              type='email'
+              placeholder='email@ejemplo.com'
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required />
             {errors.email && <p className="errors">{errors.email}</p>}
           </div>
           <div className='contact-inputs'>
-              <label>Su mensaje</label>
-              <textarea 
+            <label>Su mensaje</label>
+            <textarea
               type='text'
               placeholder='Escriba su mensaje'
               name="mensaje"
@@ -100,8 +101,8 @@ const Contact = () => {
           {errors.api && <p className="errors">{errors.api}</p>}
           <button type='submit'>Enviar </button>
         </form>
-      </div>  
+      </div>
     </section>
   )
 }
- export default Contact
+export default Contact
