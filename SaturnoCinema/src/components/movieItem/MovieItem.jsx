@@ -1,14 +1,44 @@
 import './movieItem.css';
 import { useNavigate } from 'react-router-dom';
+const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
+
 
 const MovieItem = ({ movie }) => {
+  const token = localStorage.getItem("token");
   const userType = JSON.parse(localStorage.getItem("user"))?.type
-
+  
   const navigate = useNavigate();
 
   const handleClick = () => {
     navigate(`/movies/${movie.id}`, { state: { movie } });
   };
+
+  const handleDelete = async (e) => {
+        e.preventDefault();
+        try {
+      const token = localStorage.getItem('token');
+      const res = await fetch(`${baseUrl}/movies/${movie.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`
+        },
+      }).then(
+        async res => {
+          if (!res.ok) {
+            const error = await res.json();
+            throw new Error(error.message || "Error al eliminar película");
+          }
+          alert("Pelicula eliminada.");
+          onMovieDeleted();
+        }
+      )
+    } catch (error) {
+      console.error(error.message);
+      alert("No se pudo eliminar la pelicula ", error.message);
+    };
+  };
+
 
   return (
     <div className='movie-card'>
@@ -22,8 +52,8 @@ const MovieItem = ({ movie }) => {
         <button onClick={handleClick} className='movie-button'>
           VER MÁS
         </button>
-        {userType != 0 &&
-          <button className='movie-button'>
+        {token && userType != 0 &&
+          <button className='movie-button' onClick={handleDelete}>
             ELIMINAR
           </button>
         }

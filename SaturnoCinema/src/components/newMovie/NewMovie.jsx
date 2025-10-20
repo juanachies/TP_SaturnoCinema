@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
+const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
+import './newMovie.css';
 
-const NewMovie = ({ onMovieAdded }) => {
-  const [title, setTitle] = useState("");
-  const [director, setDirector] = useState("");
-  const [year, setYear] = useState("");
-  const [genre, setGenre] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [plot, setPlot] = useState("");
+const NewMovie = ({onMovieAdded, show, onClose}) => {
+    const [title, setTitle] = useState("");
+    const [director, setDirector] = useState("");
+    const [year, setYear] = useState("");
+    const [genre, setGenre] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+    const [plot, setPlot] = useState("");
 
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -40,35 +42,44 @@ const NewMovie = ({ onMovieAdded }) => {
     };
 
     try {
+      const token = localStorage.getItem('token');
       const res = await fetch(`${baseUrl}/movies`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(movieData),
-      });
+      }).then(
+        async res => {
+          if (!res.ok) {
+            const error = await res.json();
+            throw new Error(error.message || "Error al agregar película");
+          }
+          const newMovie = await res.json();
+          alert("Pelicula agregada.");
 
-      if (!res.ok) {
-        const error = await res.json();
-        throw new Error(error.menssage || "Error al agregar película");
-      }
-      const newMovie = await res.json();
-      console.log("Pelicula agregada:", newMovie);
-
-      onMovieAdded(movieData);
-      setTitle("");
-      setDirector("");
-      setYear("");
-      setGenre("");
-      setImageUrl("");
-      setPlot("");
+          onMovieAdded(movieData);
+          setTitle("");
+          setDirector("");
+          setYear("");
+          setGenre("");
+          setImageUrl("");
+          setPlot("");
+        }
+      )
     } catch (error) {
       console.error(error.message);
-      alert("No se pudo agregar la pelicula: ", error.menssage);
+      alert("No se pudo agregar la pelicula: ", error.message);
     };
+  };
+
+    
+    if (!show) return null;
 
     return (
-      <Card className="m-4 w-50" bg="danger">
+      <div className={`new-movie-overlay ${show ? "show" : ""}`} onClick={onClose}>
+      <Card className="new-movie-card w-50" bg="danger" onClick={e => e.stopPropagation()}>
         <Card.Body>
           <Form className="text-white" onSubmit={handleAddMovie}>
             <Row>
@@ -112,7 +123,7 @@ const NewMovie = ({ onMovieAdded }) => {
                 <Form.Group className="mb-3" controlId="genre">
                   <Form.Label>Género</Form.Label>
                   <Form.Control
-                    type=""
+                    type="text"
                     placeholder="Selecciona el genero"
                     value={genre}
                     onChange={handleChangeGenre}
@@ -149,7 +160,7 @@ const NewMovie = ({ onMovieAdded }) => {
                 md={3}
                 className="d-flex flex-column justify-content-end align-items-end"
               >
-                <Button variant="primary" type="submit">
+                <Button className="new-movie-button" variant="primary" type="submit">
                   Agregar pelicula
                 </Button>
               </Col>
@@ -157,8 +168,8 @@ const NewMovie = ({ onMovieAdded }) => {
           </Form>
         </Card.Body>
       </Card>
+    </div>
     );
-  };
 }
 
   export default NewMovie;

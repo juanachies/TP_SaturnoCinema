@@ -1,11 +1,13 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Gallery from "../../components/gallery/Gallery";
 import "./coverPage.css";
 
 
 const CoverPage = () => {
   const navigate = useNavigate();
   return (
+    <>
     <div className="bg-image">
       <h1 className="titulo">SATURNO</h1>
       <h2 className="subTitulo">CINEMA</h2>
@@ -26,6 +28,8 @@ const CoverPage = () => {
       </Button>
 
     </div>
+    <Gallery/>
+    </>
   )
 }
 
