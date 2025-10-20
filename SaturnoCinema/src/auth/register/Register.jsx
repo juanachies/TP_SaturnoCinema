@@ -5,7 +5,7 @@ import { ValidateRegister } from "../Validations"
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 const Register = () => {
-
+ 
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
