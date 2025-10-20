@@ -96,3 +96,25 @@ export const ValidateLogin = (formData) => {
     
     return errors;
 }
+
+export const ValidateContact = (formData) => {
+    const errors = {};
+    
+        if (!formData.nombre.trim()){
+        errors.nombre = 'El nombre y apellido es obligatorio';
+        } else if (!validateString(formData.nombre)){
+        errors.nombre = "Solo se permiten letras";
+        }
+
+        if (!formData.email.trim()) {
+            errors.email = "El email es obligatorio";
+        } else if (!validateEmail(formData.email)) {
+            errors.email = "Email invalido"; 
+        }
+    
+        if (!formData.mensaje.trim()){
+        errors.mensaje = 'Este campo es obligatorio';
+        }
+    return errors;
+    
+}
