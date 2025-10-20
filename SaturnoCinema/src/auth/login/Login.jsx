@@ -49,6 +49,7 @@ const Login = () => {
 
           alert('Login exitoso'); 
           navigate('/');
+          window.location.reload(true)
         })
         .catch((err) => {
           console.log(err);

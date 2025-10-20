@@ -53,6 +53,7 @@ const Register = () => {
                         localStorage.setItem("token", data.token);
                         localStorage.setItem("user", JSON.stringify(data.user));
                         navigate("/");
+                        window.location.reload(true)
                     } else {
                         navigate("/login");
                     }
