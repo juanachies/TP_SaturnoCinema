@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 
-const MovieItem = ({ movie, onMovieDeleted }) => {
+const MovieItem = ({ movie }) => {
+  const token = localStorage.getItem("token");
   const userType = JSON.parse(localStorage.getItem("user"))?.type
-  
   
   const navigate = useNavigate();
 
@@ -52,7 +52,7 @@ const MovieItem = ({ movie, onMovieDeleted }) => {
         <button onClick={handleClick} className='movie-button'>
           VER MÁS
         </button>
-        {userType != 0 &&
+        {token && userType != 0 &&
           <button className='movie-button' onClick={handleDelete}>
             ELIMINAR
           </button>

@@ -5,6 +5,7 @@ import MovieSearch from '../../components/movieSearch/MovieSearch'
 import NewMovie from '../../components/newMovie/NewMovie'
 
 const MovieListing = ({movies}) => {
+    const token = localStorage.getItem("token");
     const userType = JSON.parse(localStorage.getItem("user"))?.type
 
     const [movieSearched, setMovieSearched] = useState('')
@@ -45,7 +46,7 @@ const MovieListing = ({movies}) => {
                     }
                 </div>
 
-                {userType != 0 &&
+                {token && userType != 0 &&
                     <button className='add-button' onClick={() => setShowAdd(true)}>
                         AGREGAR PELÍCULA
                     </button>

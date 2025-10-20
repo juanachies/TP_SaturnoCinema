@@ -9,6 +9,7 @@
 
 .movies {
     display: flex;
+    flex-wrap: wrap;
     gap: 5rem;
     justify-content: center;
     margin: 2rem 5rem;

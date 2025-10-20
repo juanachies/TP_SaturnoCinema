@@ -5,7 +5,7 @@ import { ValidateRegister } from "../Validations"
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 const Register = () => {
-
+ 
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
@@ -53,6 +53,7 @@ const Register = () => {
                         localStorage.setItem("token", data.token);
                         localStorage.setItem("user", JSON.stringify(data.user));
                         navigate("/");
+                        window.location.reload(true)
                     } else {
                         navigate("/login");
                     }
