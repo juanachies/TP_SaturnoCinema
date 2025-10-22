@@ -1,31 +1,40 @@
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Star, StarFill } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
-import EditMovie from "../../components/editMovie/editMovie";
+import EditMovie from "../../components/editMovie/EditMovie";
 import "./MovieDetails.css";
 import ReserveTickets from "../../components/reserveTickets/reserveTickets";
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 const MovieDetails = () => {
   const token = localStorage.getItem("token");
-  const userType = JSON.parse(localStorage.getItem("user"))?.type
+  const userType = JSON.parse(localStorage.getItem("user"))?.type;
 
   const location = useLocation();
+  const { id: paramId } = useParams();
   const navigate = useNavigate();
   const [showEdit, setShowEdit] = useState(false);
   const [movie, setMovie] = useState(null);
   const [showReserve, setShowReserve] = useState(false);
+
   useEffect(() => {
-    const movieId = location.state.movie.id;
+    // tomar id desde location.state si existe, sino desde params
+    const movieId = location.state?.movie?.id || paramId;
     if (!movieId) return;
 
     fetch(`${baseUrl}/movies/${movieId}`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`Error ${res.status}`);
+        return res.json();
+      })
       .then((data) => setMovie(data))
-      .catch(() => alert("ERROR cargando la pelicula "));
-  }, [location.state]);
+      .catch((err) => {
+        console.error(err);
+        alert("ERROR cargando la pelicula");
+      });
+  }, [location.state, paramId]);
 
-  if (!movie) return <p>Cargando pelicula</p>;
+  if (!movie) return <p>Cargando película...</p>;
 
   const clickHandle = () => navigate("/movies");
 
@@ -34,15 +43,14 @@ const MovieDetails = () => {
     setShowEdit(false);
   };
 
-  const { imageUrl, title, director, year, runtime, plot, rating = 0, genre,hours } = movie;
+  const { imageUrl, title, director, year, runtime, plot, rating = 0, genre, hours } = movie;
 
   const starRating = Array.from({ length: 5 }, (_, index) =>
-    index < rating ? <StarFill key={index} /> : <Star key={index} />
+    index < Math.round(rating) ? <StarFill key={index} /> : <Star key={index} />
   );
 
   return (
     <>
-      
       <div className="movie-details-page">
         <h1>{title}</h1>
         <div className="movie-details-body">
@@ -71,16 +79,18 @@ const MovieDetails = () => {
             <div className="sinopsis">
               <h2>Sinopsis</h2>
               <p>{plot}</p>
-            </div>   <div className="hours">
+            </div>
+            <div className="hours">
               <h2>Horarios disponibles</h2>
               <p>{hours}</p>
             </div>
-            <button className="details-button" onClick={() => setShowEdit(true)}>Editar Película</button>
+
+            <button className="details-button" onClick={() => setShowReserve(true)}>Reservar Tickets</button>
             <button className="details-button" onClick={clickHandle}>Volver</button>
-            {token && userType != 0 && 
-              <button className="details-button" onClick={() => setShowReserve(true)}>Editar Película</button>
-            }
-            
+
+            {token && userType != 0 && (
+              <button className="details-button" onClick={() => setShowEdit(true)}>Editar Pelicula</button>
+            )}
           </div>
         </div>
       </div>
@@ -90,11 +100,11 @@ const MovieDetails = () => {
         onClose={() => setShowEdit(false)} 
         onMovieAdded={handleMovieUpdated}
       />
-     <ReserveTickets
-    showModal={showReserve}
-    onCloseModal={() => setShowReserve(false)}
-    movieDetails={movie}
-    />
+      <ReserveTickets
+        showModal={showReserve}
+        onCloseModal={() => setShowReserve(false)}
+        movieDetails={movie}
+      />
     </>
   );
 };
