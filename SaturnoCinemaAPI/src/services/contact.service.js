@@ -13,7 +13,4 @@ export const contactMessage = async (req, res) => {
     })
 
     res.status(201).json(newContact);
-
-
-
 }
