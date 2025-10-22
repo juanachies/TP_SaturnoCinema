@@ -9,6 +9,17 @@ export const validateEmail = (email) => {
     return emailRegex.test(email);
 }
 
+export const validateDate = (date) => {
+    const d = new Date(date);
+    if (!(d instanceof Date) || isNaN(d)) return false;
+
+    const today = new Date();
+    const hundredYearsAgo = new Date();
+    hundredYearsAgo.setFullYear(today.getFullYear() - 100);
+
+    return d <= today && d >= hundredYearsAgo;
+}
+
 export const validateTelephone = (tel) => {
     const telRegex = /^\d{7,15}$/
     return telRegex.test(tel)
@@ -49,6 +60,10 @@ export const ValidateRegister = (formData) => {
         errors.email = "El email es obligatorio";
     } else if (!validateEmail(formData.email)) {
         errors.email = "El email no es válido";
+    }
+
+    if (!validateDate(formData.birthdate)) {
+        errors.birthdate = "La fecha de nacimiento debe ser válida";
     }
 
     if (!validateTelephone(formData.telephone)) {
