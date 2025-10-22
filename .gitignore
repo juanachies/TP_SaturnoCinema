@@ -1,2 +1,4 @@
 movies.db
 .env
+node_modules
+
