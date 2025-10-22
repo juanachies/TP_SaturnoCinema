@@ -12,6 +12,10 @@ const Menu = () => {
                 {token && userType === 2 &&
                     <li><Link to="/users">USUARIOS</Link></li>
                 }
+
+                {token &&
+                    <li><Link to="/reservations">RESERVAS</Link></li>
+                }
                 
                 <li><Link to="/movies">CARTELERA</Link></li>
                 <li><Link to="/login">INGRESAR</Link></li>
