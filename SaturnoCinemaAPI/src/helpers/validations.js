@@ -13,6 +13,17 @@ export const validateTelephone = (tel) => {
     return telRegex.test(tel)
 }
 
+export const validateDate = (date) => {
+    const d = new Date(date);
+    if (!(d instanceof Date) || isNaN(d)) return false;
+
+    const today = new Date();
+    const hundredYearsAgo = new Date();
+    hundredYearsAgo.setFullYear(today.getFullYear() - 100);
+
+    return d <= today && d >= hundredYearsAgo;
+}
+
 export const validatePassword = (password, minLength, maxLength, needsUppercase, needsNumber) => {
     if (minLength && password.length < minLength)
         return false;
@@ -31,7 +42,7 @@ export const validatePassword = (password, minLength, maxLength, needsUppercase,
 
 
 export const validateRegisterUser = (body) => {
-    const { name, surname, email, telephone, password } = body;
+    const { name, surname, email, birthdate, telephone, password } = body;
 
     const result = {
         error: false,
@@ -53,6 +64,11 @@ export const validateRegisterUser = (body) => {
         error: true,
         message: "Email invalido",
         };
+    } else if (!validateDate(birthdate)) {
+        return {
+        error: true,
+        message: 'Fecha de nacimiento invalida'
+        }
     } else if (!validateTelephone(telephone)) {
         return {
         error: true,
