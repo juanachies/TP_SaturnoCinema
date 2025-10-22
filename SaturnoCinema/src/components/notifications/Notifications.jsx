@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import "./Notifications.css"; // <-- corregido: nombre exacto del archivo CSS
-
+import "./Notifications.css"; 
 const Notification = ({ message, type = "info", onClose }) => {
   useEffect(() => {
     if (message) {
@@ -15,7 +14,7 @@ const Notification = ({ message, type = "info", onClose }) => {
     <div className={`notification ${type}`}>
       <p>{message}</p>
       <button className="close-btn" onClick={onClose}>
-        ✖
+        x
       </button>
     </div>
   );
