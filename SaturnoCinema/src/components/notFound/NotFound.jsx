@@ -1,16 +1,21 @@
+import { useNavigate } from 'react-router-dom';
 import './notFound.css';
 
-export const NotFound = () => {
+const NotFound = () => {
+    const navigate = useNavigate();
+
+    const handleRedirect = () => {
+        navigate('/');
+    };
 
     return (
-        <>
-            <i class="bi bi-ban"></i>
-            <h2>
-                Ups! Usted no tiene autorizacion para esto. Lo redireccionaremos a la pagina principa.
-            </h2>
-            <button>
+        <div className="not-found container bg-image-notFound">
 
-            </button>
-        </>
-    )
-}
+            <h2 className='titulo-notFound'><span className='span'>Ups!</span><br /> Usted no tiene autorización para esto.</h2>
+            <p className='parrafo-notFound'>Presione el botón para volver a la página principal.</p>
+            <button className='button-notFound' onClick={handleRedirect}>Volver al inicio</button>
+        </div>
+    );
+};
+
+export default NotFound;
