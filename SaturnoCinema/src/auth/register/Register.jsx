@@ -14,7 +14,6 @@ const Register = () => {
         email: '',
         birthdate: '',
         telephone: '',
-        birthdate: '',
         password: '',
         confPassword: '',
         terminos: false
