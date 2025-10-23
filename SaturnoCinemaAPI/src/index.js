@@ -5,6 +5,7 @@ import movieRoutes from './routes/movie.routes.js'
 import authRoutes from './routes/auth.routes.js'
 import contactRoutes from './routes/contact.routes.js'
 import reservationRoutes from './routes/reservation.routes.js'
+import './models/relations.js'
 import { sequelize } from "./db.js";
 
 const app = express()
@@ -23,10 +24,10 @@ try{
     app.use(authRoutes)
     app.use(contactRoutes)
     app.use(reservationRoutes)
-    app.listen(PORT)
     
     await sequelize.sync();
-
+    
+    app.listen(PORT)
     console.log(`Server listening on port ${PORT}`)
 
 } catch (error){
