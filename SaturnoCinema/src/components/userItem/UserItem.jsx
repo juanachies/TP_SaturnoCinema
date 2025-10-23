@@ -34,7 +34,7 @@ const UserItem = ({ user, onUserDeleted }) => {
         throw new Error(error.message || "Error al eliminar usuario");
       }
 
-      alert("Usuario eliminado correctamente.");
+      
       setShowConfirmModal(false);
        window.location.reload(true)
       if (onUserDeleted) onUserDeleted();
