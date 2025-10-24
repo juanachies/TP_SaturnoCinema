@@ -50,6 +50,7 @@ Node Sqlite3
 ~~~
 #### Créditos
 Desarrollado por:
+>
 ▪️ Chies Doumecq, Juana.
 ▪️ Dolce, María Victoria.
 ▪️ Frisco, Ignacio.  
