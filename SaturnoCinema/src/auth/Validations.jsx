@@ -133,3 +133,39 @@ export const ValidateContact = (formData) => {
     return errors;
     
 }
+
+
+export const validateNewMovie = (movieData) => {
+  const errors = {};
+
+  if (!movieData.title?.trim()) {
+    errors.title = "El título es obligatorio";
+  }
+  if (!movieData.director?.trim()) {
+    errors.director = "El director es obligatorio";
+  }
+  if (!movieData.year || movieData.year < 1800) {
+    errors.year = "Año inválido";
+  }
+  if (!movieData.genre?.trim()) {
+    errors.genre = "El género es obligatorio";
+  }
+  if (!movieData.runtime || movieData.runtime <= 0) {
+    errors.runtime = "Duración inválida";
+  }
+  const rating = parseInt(movieData.rating, 10);
+  if (isNaN(rating) || rating < 0 || rating > 5) {
+    errors.rating = "Rating debe estar entre 0 y 5";
+  }
+  if (!Array.isArray(movieData.hours) || movieData.hours.length === 0 || movieData.hours.some(h => !h.trim())) {
+    errors.hours = "Debes agregar al menos un horario válido";
+  }
+  if (!movieData.plot?.trim()) {
+    errors.plot = "La sinopsis es obligatoria";
+  }
+  if (!movieData.imageUrl?.trim()) {
+    errors.imageUrl = "La URL de la imagen es obligatoria";
+  }
+
+  return errors;
+};

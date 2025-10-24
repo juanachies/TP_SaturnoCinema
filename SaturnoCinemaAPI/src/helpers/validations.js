@@ -136,29 +136,19 @@ export const ValidateContact = (req) => {
     return result;
 }
 
-export const ValidateNewMovie = (req) => {
-    const {nombre, email, mensaje} = req
+export const validateNewMovie = (movieData) => {
+  const errors = {};
 
-    const result = {
-        error: false,
-        message: "",
-    };
+  if (!movieData.title?.trim()) errors.title = "El título es obligatorio";
+  if (!movieData.director?.trim()) errors.director = "El director es obligatorio";
+  if (!movieData.year || movieData.year < 1800) errors.year = "Año inválido";
+  if (!movieData.genre?.trim()) errors.genre = "El género es obligatorio";
+  if (!movieData.runtime || movieData.runtime <= 0) errors.runtime = "Duración inválida";
+  if (movieData.rating < 0 || movieData.rating > 5) errors.rating = "Rating debe estar entre 0 y 5";
+  if (!movieData.hours?.trim()) errors.hours = "Agregá al menos un horario";
+  if (!movieData.plot?.trim()) errors.plot = "La sinopsis es obligatoria";
+  if (!movieData.imageUrl?.trim()) errors.imageUrl = "La URL de la imagen es obligatoria";
 
-    if (!validateString(nombre) )
-        return {
-        error: true,
-        message: 'Campo invalido'
-        }
-    else if (!validateEmail(email))
-        return{
-            error: true,
-            message: 'Mail invalido'
-        }
-    
-    else if (!validateString(mensaje))
-        return {
-        error: true,
-        message: 'Mensaje invalido'
-        }
-    return result;
-}
+  return errors;
+};
+  

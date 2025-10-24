@@ -1,4 +1,4 @@
-.edit-movie-overlay {
+.edit-movie-overlay{
   position: fixed;
   top: 0;
   left: 0;
@@ -20,26 +20,60 @@
 }
 
 .edit-movie-card {
-  background-color: #dc3545;
-  color: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-  transform: translateY(-50px);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  opacity: 0;
+ padding: 2.5rem 3rem;
+    margin: 1rem;
+    background-color: #200c0b;
+    color: #f19fc7;
+    border: 2px solid #c25751;
+    border-radius: 15px;
+    width: 35rem;
 }
+
 
 .edit-movie-overlay.show .edit-movie-card {
   transform: translateY(0);
   opacity: 1;
 }
 
-.edit-movie-button {
-  transition: transform 0.2s, box-shadow 0.2s;
+.edit-movie-inputs{
+    display: flex;
+    flex-direction: column;
+    color:#e294b7
 }
 
-.edit-movie-button:hover {
+.edit-movie-inputs input{
+    
+    border-radius: 10px;
+    border: 2px solid #7d3a34;
+    background-color: #4c1d1a;
+    padding: 0.2rem 1rem;
+    transition: all 0.5s ease;
+}
+.edit-movie-inputs input::placeholder {
+    color: #f19fc7;
+}
+.edit-movie-inputs input:focus {
+    outline: none;
+    box-shadow: 0 0 8px #7d3a34;
+    border-color: #7d3a34;
+}
+
+
+.edit-movie-card button{
+    background-color: #c25751;
+    color: #e294b7;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    border: none;
+    width: 100%;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+
+}
+
+.edit-movie-card button:hover {  
+  background-color: #a94442;
   transform: scale(1.1);
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
