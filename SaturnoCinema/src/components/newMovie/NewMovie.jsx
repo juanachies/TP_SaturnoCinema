@@ -1,36 +1,52 @@
 import { useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { validateNewMovie } from "../../auth/Validations";
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 import "./newMovie.css";
 
 const NewMovie = ({onMovieAdded, show, onClose}) => {
-    const [title, setTitle] = useState("");
-    const [director, setDirector] = useState("");
-    const [year, setYear] = useState("");
-    const [genre, setGenre] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
-    const [plot, setPlot] = useState("");
-    const [hours, setHours] = useState("");
-    const [runtime, setRuntime] = useState("");
-    const [rating, setRating] = useState("");
-    
+    const [movieData, setMovieData] = useState({
+  title: "",
+  director: "",
+  year: "",
+  genre: "",
+  runtime: "",
+  rating: "",
+  plot: "",
+  imageUrl: "",
+  hours: ""
+});
+  const [errors, setErrors] = useState({});
+
+const handleChange = (event) => {
+  const { name, value } = event.target;
+  setMovieData({
+    ...movieData,
+    [name]: value
+  });
+};
+
   const handleAddMovie = async (e) => {
     e.preventDefault();
 
-    const movieData = {
-      title,
-      director,
-      year,
-      genre,
-      imageUrl,
-      plot,
-      hours: hours.split(",").map(h => h.trim()),
-      runtime,
-      rating: parseInt(rating, 10),
-    };
+     const validationErrors = validateNewMovie({
+    ...movieData,
+    rating: parseInt(movieData.rating, 10),
+    hours: movieData.hours.split(",").map(h => h.trim())
+  });
 
+    setErrors(validationErrors);
 
+     if (Object.keys(validationErrors).length > 0) {
+    return;
+  }
 
+const movieDataToSend = {
+    ...movieData,
+    rating: parseInt(movieData.rating, 10),
+    hours: movieData.hours.split(",").map(h => h.trim())
+  };
+  
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(`${baseUrl}/movies`, {
@@ -39,7 +55,7 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(movieData),
+        body: JSON.stringify(movieDataToSend),
       });
 
       if (!res.ok) {
@@ -50,17 +66,19 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
       const newMovie = await res.json(); //para que no recargue
       onMovieAdded(newMovie);
 
-      setTitle("");
-      setDirector("");
-      setYear("");
-      setGenre("");
-      setImageUrl("");
-      setPlot("");
-      setHours("");
-      setRuntime("");
-      setRating("");
-      onClose();
-     
+      setMovieData({
+      title:"",
+      director:"",
+      year:"",
+      genre:"",
+      imageUrl:"",
+      plot:"",
+      hours:"",
+      runtime:"",
+      rating:""
+     });
+     onClose();
+
     } catch (error) {
       console.error(error.message);
       alert("No se pudo agregar la pelicula: " + error.message);
@@ -82,9 +100,11 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
                   <Form.Control
                     type="text"
                     placeholder="Ingresar título"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    value={movieData.title}
+                    name="title"
+                    onChange={handleChange}
                   />
+                  {errors.title && <p className="errors">{errors.title}</p>}
                 </Form.Group>
               </Col>
               <Col md={6}>
@@ -93,9 +113,11 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
                   <Form.Control
                     type="text"
                     placeholder="Ingresar director"
-                    value={director}
-                    onChange={(e) => setDirector(e.target.value)}
+                    value={movieData.director}
+                    name="director"
+                    onChange={handleChange}
                   />
+                  {errors.director && <p className="errors">{errors.director}</p>}
                 </Form.Group>
               </Col>
             </Row>
@@ -107,9 +129,11 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
                     type="number"
                     min={1800}
                     placeholder="Ingresar año"
-                    value={year}
-                    onChange={(e) => setYear(e.target.value)}
+                    value={movieData.year}
+                    name="year"
+                    onChange={handleChange}
                   />
+                  {errors.year && <p className="errors">{errors.year}</p>}
                 </Form.Group>
               </Col>
               <Col md={6}>
@@ -118,9 +142,11 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
                   <Form.Control
                     type="text"
                     placeholder="Ingresar género"
-                    value={genre}
-                    onChange={(e) => setGenre(e.target.value)}
+                    value={movieData.genre}
+                    name="genre"
+                    onChange={handleChange}
                   />
+                  {errors.genre && <p className="errors">{errors.genre}</p>}
                 </Form.Group>
               </Col>
             </Row>
@@ -131,9 +157,11 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
                   <Form.Control
                     type="text"
                     placeholder="Ingresa la duracion en minutos"
-                    value={runtime}
-                    onChange={(e) => setRuntime(e.target.value)}
+                    value={movieData.runtime}
+                    name="runtime"
+                    onChange={handleChange}
                   />
+                  {errors.runtime && <p className="errors">{errors.runtime}</p>}
                 </Form.Group>
               </Col>
               <Col md={6}>
@@ -144,10 +172,11 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
                     placeholder="ingrese la puntuacion (1 a 5)"
                     max={5}
                     min={0}
+                    value={movieData.rating}
                     name="rating"
-                    value={rating}
-                    onChange={(e) => setRating(e.target.value)}
+                    onChange={handleChange}
                   />
+                  {errors.rating && <p className="errors">{errors.rating}</p>}
                 </Form.Group>
               </Col>
             </Row>
@@ -158,9 +187,11 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
                   <Form.Control
                     type="text"
                     placeholder="Agrega una sinopsis"
-                    value={plot}
-                    onChange={(e) => setPlot(e.target.value)}
+                    value={handleChange.plot}
+                    name="plot"
+                    onChange={handleChange}
                   />
+                  {errors.plot && <p className="errors">{errors.plot}</p>}
                 </Form.Group>
               </Col>
               <Col md={6}>
@@ -169,9 +200,11 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
                   <Form.Control
                     type="text"
                     placeholder="Agrega un horario"
-                    value={hours}
-                    onChange={(e) => setHours(e.target.value)}
+                    value={movieData.hours}
+                    name="hours"
+                    onChange={handleChange}
                   />
+                  {errors.hours && <p className="errors">{errors.hours}</p>}
                 </Form.Group>
               </Col>
             </Row>
@@ -182,9 +215,11 @@ const NewMovie = ({onMovieAdded, show, onClose}) => {
                 <Form.Control
                   type="text"
                   placeholder="Ingresar url de imagen"
-                  value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
+                  value={movieData.imageUrl}
+                  name="imageUrl"
+                  onChange={handleChange}
                 />
+                {errors.imageUrl && <p className="errors">{errors.imageUrl}</p>}
               </Form.Group>
             </Row>
             <Row className="justify-content-end">
