@@ -58,6 +58,9 @@
     border-color: #7d3a34;
 }
 
+.errors{
+    color: rgb(176, 9, 9);
+}
 
 .new-movie-card button{
     background-color: #c25751;
