@@ -9,12 +9,15 @@ const EditMovie = ({ onMovieAdded, show, onClose }) => {
   const [genre, setGenre] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [plot, setPlot] = useState("");
+  const [hours, setHours] = useState("");
+  const [runtime, setRuntime] = useState("");
+  const [rating, setRating] = useState("");
 
   const handleAddMovie = (e) => {
     e.preventDefault();
-    const movieData = { title, director, year, genre, imageUrl, plot };
+    const movieData = { title, director, year, genre, imageUrl, plot, hours, runtime, rating };
     onMovieAdded(movieData);
-    setTitle(""); setDirector(""); setYear(""); setGenre(""); setImageUrl(""); setPlot("");
+    setTitle(""); setDirector(""); setYear(""); setGenre(""); setImageUrl(""); setPlot(""); setHours(""); setRuntime(""); setRating("");
     onClose();
   };
 
@@ -27,7 +30,7 @@ const EditMovie = ({ onMovieAdded, show, onClose }) => {
           <Form className="text-white" onSubmit={handleAddMovie}>
             <Row>
               <Col md={6}>
-                <Form.Group className="mb-3" controlId="title">
+                <Form.Group className="new-movie-inputs" controlId="title">
                   <Form.Label>Título</Form.Label>
                   <Form.Control
                     type="text"
@@ -38,7 +41,7 @@ const EditMovie = ({ onMovieAdded, show, onClose }) => {
                 </Form.Group>
               </Col>
               <Col md={6}>
-                <Form.Group className="mb-3" controlId="director">
+                <Form.Group className="new-movie-inputs" controlId="director">
                   <Form.Label>Director</Form.Label>
                   <Form.Control
                     type="text"
@@ -51,7 +54,7 @@ const EditMovie = ({ onMovieAdded, show, onClose }) => {
             </Row>
             <Row>
               <Col md={6}>
-                <Form.Group className="mb-3" controlId="year">
+                <Form.Group className="new-movie-inputs" controlId="year">
                   <Form.Label>Año</Form.Label>
                   <Form.Control
                     type="number"
@@ -63,7 +66,7 @@ const EditMovie = ({ onMovieAdded, show, onClose }) => {
                 </Form.Group>
               </Col>
               <Col md={6}>
-                <Form.Group className="mb-3" controlId="genre">
+                <Form.Group className="new-movie-inputs" controlId="genre">
                   <Form.Label>Género</Form.Label>
                   <Form.Control
                     type="text"
@@ -74,18 +77,34 @@ const EditMovie = ({ onMovieAdded, show, onClose }) => {
                 </Form.Group>
               </Col>
             </Row>
-            <Row className="mb-3">
-              <Form.Group controlId="imageUrl">
-                <Form.Label>URL de imagen</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Ingresar URL de imagen"
-                  value={imageUrl}
-                  onChange={e => setImageUrl(e.target.value)}
-                />
-              </Form.Group>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="edit-movie-inputs" controlId="duracion">
+                  <Form.Label>Duración</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Ingresa la duracion en minutos"
+                    value={runtime}
+                    onChange={e => setRuntime(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="edit-movie-inputs" controlId="rating">
+                  <Form.Label>Rating</Form.Label>
+                  <Form.Control
+                    type="number"
+                    placeholder="ingrese la puntuacion (1 a 5)"
+                    max={5}
+                    min={0}
+                    name="rating"
+                    value={rating}
+                    onChange={e => setRating(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
             </Row>
-            <Row className="mb-3">
+            <Row className="new-movie-inputs">
               <Col md={12}>
                 <Form.Group controlId="plot">
                   <Form.Label>Sinopsis</Form.Label>
@@ -97,6 +116,17 @@ const EditMovie = ({ onMovieAdded, show, onClose }) => {
                   />
                 </Form.Group>
               </Col>
+            </Row>
+            <Row className="new-movie-inputs">
+              <Form.Group controlId="imageUrl">
+                <Form.Label>URL de imagen</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Ingresar URL de imagen"
+                  value={imageUrl}
+                  onChange={e => setImageUrl(e.target.value)}
+                />
+              </Form.Group>
             </Row>
             <Row className="justify-content-end">
               <Col md={3} className="d-flex justify-content-end">
