@@ -49,7 +49,7 @@ Node Sqlite3
   npm i sqlite3
 ~~~
 #### Créditos
-Desarrollado por:
+Desarrollado por:  
 ▪️ Chies Doumecq, Juana.  
 ▪️ Dolce, María Victoria.  
 ▪️ Frisco, Ignacio.  
