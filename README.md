@@ -1,9 +1,9 @@
-## Saturno Cinema 🪐
+# Saturno Cinema 🪐
 
 El proyecto se basa en una aplicación web desarrollada con el fin de permitir visualizar la cartelera de películas, gestionar reservas y contactar con el cine.
 Nuestra elección se basa en un gusto personal que tenemos por las películas, en este caso, por la "pantalla grande".
 
-#### Descripción y funcionalidades
+## Descripción y funcionalidades
 El proyecto consta de 4 secciones bien definidas:
 1. Portada
 Donde se describe el comienzo del cine hasta la actualidad. A su vez, se le suman algunas imágenes de nuestro cine.
@@ -16,7 +16,7 @@ En esta sección podremos ingresar como usuario ya registrado o bien registrarno
 4. Contacto
 Consta de un formulario de contacto para problemas/sugerencias.
 
-#### Principales tecnologías
+## Principales tecnologías
 - React + Vite
 - React-Bootstrap
 - React Router DOM
@@ -48,7 +48,7 @@ Sequelize
 Node Sqlite3
   npm i sqlite3
 ~~~
-#### Créditos
+## Créditos
 Desarrollado por:  
 ▪️ Chies Doumecq, Juana.  
 ▪️ Dolce, María Victoria.  
