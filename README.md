@@ -50,11 +50,10 @@ Node Sqlite3
 ~~~
 #### Créditos
 Desarrollado por:
->
-▪️ Chies Doumecq, Juana.
-▪️ Dolce, María Victoria.
+▪️ Chies Doumecq, Juana.  
+▪️ Dolce, María Victoria.  
 ▪️ Frisco, Ignacio.  
-▪️ Londero, Ernesto.
+▪️ Londero, Ernesto.  
 
 *Trabajo Práctico Integrador - Cátedra de Programación III - [Universidad Tecnológica Nacional - Sede Rosario](https://www.frro.utn.edu.ar/index.php)*
 
