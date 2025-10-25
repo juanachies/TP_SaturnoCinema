@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
-import { validateNewMovie } from "../../auth/Validations";
+import { validateMovie } from "../../auth/Validations";
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 import "./newMovie.css";
 
@@ -29,7 +29,7 @@ const handleChange = (event) => {
   const handleAddMovie = async (e) => {
     e.preventDefault();
 
-     const validationErrors = validateNewMovie({
+     const validationErrors = validateMovie({
     ...movieData,
     rating: parseInt(movieData.rating, 10),
     hours: movieData.hours.split(",").map(h => h.trim())
@@ -195,7 +195,7 @@ const movieDataToSend = {
                 </Form.Group>
               </Col>
               <Col md={6}>
-                <Form.Group className="new-movie-inputs" controlId="genre">
+                <Form.Group className="new-movie-inputs" controlId="hours">
                   <Form.Label>Horarios</Form.Label>
                   <Form.Control
                     type="text"

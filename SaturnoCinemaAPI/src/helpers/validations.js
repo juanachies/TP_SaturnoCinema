@@ -136,7 +136,7 @@ export const ValidateContact = (req) => {
     return result;
 }
 
-export const validateNewMovie = (movieData) => {
+export const validateMovie = (movieData) => {
   const errors = {};
 
   if (!movieData.title?.trim()) errors.title = "El título es obligatorio";
