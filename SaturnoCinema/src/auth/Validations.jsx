@@ -135,7 +135,7 @@ export const ValidateContact = (formData) => {
 }
 
 
-export const validateNewMovie = (movieData) => {
+export const validateMovie = (movieData) => {
   const errors = {};
 
   if (!movieData.title?.trim()) {

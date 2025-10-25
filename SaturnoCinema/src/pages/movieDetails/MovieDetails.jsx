@@ -101,7 +101,8 @@ const MovieDetails = () => {
       <EditMovie 
         show={showEdit} 
         onClose={() => setShowEdit(false)} 
-        onMovieAdded={handleMovieUpdated}
+        onMovieEdited={handleMovieUpdated}
+        movieToEdit={movie}
       />
       <ReserveTickets
         showModal={showReserve}
