@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import './reservations.css'
-import ReservationItem from "../../components/reservationItem/reservationItem"
+import ReservationItem from "../../components/reservationItem/ReservationItem";
 
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
@@ -48,7 +48,7 @@ const Reservations = () => {
             })
             .catch((err) => console.log(err));
         }
-    }, [token, userType, reservations])
+    }, [token, userType])
         
 
     return (

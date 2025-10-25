@@ -21,7 +21,7 @@ const Footer = () => {
                 <div className='navegacion'>
                     <h4 className='footer-subtitle'>NAVEGACIÓN</h4>
                     <Link to='/'>Inicio</Link>
-                    {token && userType &&
+                    {token &&
                         <Link to='/reservations'>Reservas</Link>
                     }
                     {token && userType === 2 &&
