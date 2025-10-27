@@ -6,11 +6,14 @@ ul {
 li {
     list-style: none;
     padding: 1rem;
+    
 }
 
 
 .header-style {
-    background-color: #662D2B;
+    background-color: var(--header-backround);
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
 }

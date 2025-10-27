@@ -1,7 +1,7 @@
 .movie-card {
-    background-color: #4c1d1a;
+    background-color: var(--input-bg);
     border-radius: 8px;
-    border: 2px solid #c25751;
+    border: 2px solid var(--border-color);
     color: #dddddd94;
     width: 15rem;
     overflow: hidden;
@@ -9,12 +9,15 @@
 }
 
 .poster-container{
+    width: 100%;
+    height: 400px;
     overflow: hidden;
 }
 
 .poster-container img {
     width: 100%; 
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
@@ -26,12 +29,12 @@
 .movie-card-title{
     margin: 0.5rem 0;
     font-size: 1.2rem;
-    color: #6a944f;
+    color: var(--titulo-menu);
     height: 3rem;
 }
 
 .movie-button{
-    color: #f19ec4;
+    color: var(--button-text);
     font-weight: 500;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
@@ -42,17 +45,21 @@
 }
 
 .movie-button:nth-of-type(1){
-    background-color: #c25751;
+    background-color: var(--button-bg);
 }
 
 .movie-button:nth-of-type(2){
-    background-color: #731c18;
+    background-color: var(--button-addMovie);
 }
 
 .movie-button:nth-of-type(1):hover {
-    background-color: #a94442;
+    background-color: var(--button-hover);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .movie-button:nth-of-type(2):hover {
-    background-color: #5b1713;
+    background-color:var(--button-addMovie-hover);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }

@@ -6,6 +6,7 @@ const AuthContainer = ({children}) => {
             <h1 className='auth-title'>ÚNETE A SATURNO CINEMA</h1>
             {children}
         </div>
+        
     )
 }
 

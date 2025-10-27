@@ -1,14 +1,14 @@
-import Movies from "../models/Movies.js";
+import Movie from "../models/Movie.js";
 
 export const findMovies = async (req, res) => {
-    const movies = await Movies.findAll();
+    const movies = await Movie.findAll();
     res.json(movies)
 }
 
 
 export const findMovie = async (req, res) => {
     const {id} = req.params;
-    const movie = await Movies.findByPk(id);
+    const movie = await Movie.findByPk(id);
 
     if (!movie)
         return res.status(404).send({message: 'Movie not found'});
@@ -23,7 +23,7 @@ export const createMovie = async(req, res) => {
     if (!title)
         return res.status(400).send({message: 'Title field is required'})
 
-    const newMovie = await Movies.create({
+    const newMovie = await Movie.create({
         title, 
         director, 
         year, 
@@ -43,7 +43,7 @@ export const updateMovie = async (req, res) => {
     const {id} = req.params;
     const {title, director, year, genre, runtime, rating, imageUrl, plot, hours} = req.body;
 
-    const movie = await Movies.findByPk(id);
+    const movie = await Movie.findByPk(id);
 
     if (!movie)
         return res.status(404).send({message: 'Movie not found'})
@@ -68,7 +68,7 @@ export const updateMovie = async (req, res) => {
 
 export const deleteMovie = async(req,res) => {
     const {id} = req.params;
-    const movie = await Movies.findByPk(id);
+    const movie = await Movie.findByPk(id);
 
     if (!movie) 
         return res.status(404).send({message: 'Movie not found'})

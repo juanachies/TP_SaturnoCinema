@@ -1,7 +1,15 @@
 import Reservation from '../models/Reservation.js'
+import User from '../models/User.js'
+import Movie from '../models/Movie.js'
+
 
 export const findReservations = async (req, res) => {
-    const reservations = await Reservation.findAll();
+    const reservations = await Reservation.findAll({
+        include: [
+            { model: User, attributes: ['name', 'surname'] },
+            { model: Movie, attributes: ['title'] }
+        ]
+    });
     res.json(reservations)
 }
 
@@ -10,7 +18,11 @@ export const findUserReservations = async (req, res) => {
     const userId = req.user.id;
 
     const reservations = await Reservation.findAll({
-        where: { userId } 
+        where: { userId },
+        include: [
+            { model: Movie, attributes: ['title'] },
+            { model: User, attributes: ['name', 'surname'] }
+        ]
     });
 
     res.json(reservations);

@@ -1,0 +1,29 @@
+.reservation-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--input-placeholder);
+    border: 2px solid var(--border-color);
+    background-color: var(--input-bg);
+    padding: 1rem 2rem;
+    border-radius: 15px;
+}
+
+.reservation-item h3{
+    font-weight: 700;
+}
+
+.reservation-item button{
+    background-color: var(--input-bg);
+    border: none;
+    border-radius: 15px;
+    color: var(--button-text);
+    font-weight: 500;
+    padding: 0.2rem 0.8rem;
+    transition: background-color 0.3s ease;
+}
+
+.reservation-item button:hover{
+    background-color: var(--button-hover);
+}

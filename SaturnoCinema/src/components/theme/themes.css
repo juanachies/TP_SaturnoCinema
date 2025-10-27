@@ -1,0 +1,71 @@
+:root {
+
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  --card-bg: #200c0b;
+  --card-text: #f19fc7;
+  --border-color: #c25751;
+  --input-bg: #4c1d1a;
+  --input-border: #7d3a34;
+  --input-placeholder: #f19fc7;
+  --button-bg: #c25751;
+  --button-hover: #a94442;
+  --button-text: #f5a6ee;
+  --error-color: rgb(176, 9, 9);
+  --header-backround: #662D2B;
+  --titulo-logo: #c25751;
+  --subtitulo-logo:#6680AB;
+  --titulo-cover-page: #c25751;
+  --titulo-menu:#6a944f;
+  --background-image-cover-page: url("../../img/saturnoDark.png");
+  --p: #f1f1f1;
+  --footer-backround:#200c0b;
+  --instagram:#c25751;
+  --facebook:#6680ab;
+  --twitter:#709f51;
+  --footer-subtitulo:#c25751;
+  --border-footer: #c25751;
+  --logout-text:#568337;
+  --logout-background-color:#4c1d1a;
+  --logout-hover:#709f51;
+  --notFound-msg:#f999be;
+  --button-notFound: #66a33d;
+  --button-notFound-cover: #77ab55;
+  --button-addMovie: #731c18;
+  --button-addMovie-hover:#5b1713;
+}
+
+[data-theme="light"] {
+  --bg-overlay: rgba(255, 255, 255, 0.7);
+  --card-bg: #C9786F;
+  --card-text: #4c1d1a;
+  --border-color: #d3bab8;
+  --input-bg: #F6CCE2;
+  --input-border: #d3bab8;
+  --input-placeholder: #961e1e;
+  --button-bg: #e4b6b6;
+  --button-hover: #d59797;
+  --button-text: #6f241f;
+  --error-color: #b00020;
+  --header-backround:#f58787a2;
+  --titulo-logo: #C25751;
+  --subtitulo-logo:#708eb8;
+  --titulo-cover-page:#C25751;
+  --titulo-menu:#6680AB;
+  --background-image-cover-page: url("../../img/saturnoLight.png");
+  --p:#000000;
+  --footer-backround:#b32f2fd3;
+  --instagram:#9b1f18;
+  --facebook:#365079;
+  --twitter:#437522;
+  --footer-subtitulo:#709f51;
+  --border-footer: #5e100c;
+  --logout-text:#6680AB;
+  --logout-background-color:#dd5454a1;
+  --logout-hover:#84daf0;
+  --notFound-msg:#708eb8;
+  --button-notFound: #a1e873;
+  --button-notFound-cover: #adff77;
+  --button-addMovie: #e97670;
+  --button-addMovie-hover:#ba504a;
+}
+

@@ -14,8 +14,8 @@
 
 
 .reserve-card {
-  background-color: #4c1d1a;
-  color: #f19fc7;
+  background-color:var(--input-bg);
+  color: var(--input-placeholder);
   border-radius: 20px;
   width: 400px;
   max-width: 90%;
@@ -34,7 +34,7 @@
 
 .reserve-card .form-label,
 .reserve-card label {
-  color: #e0d7e0;
+  color: var(--input-placeholder);
   font-weight: 500;
   margin-bottom: 0.25rem;
   display: block;
@@ -47,9 +47,9 @@
   padding: 0.6rem 0.75rem;
   margin-bottom: 1rem;
   border-radius: 8px;
-  border: 1px solid #c25751;
-  background-color: #5b1e1a;
-  color: #f8cce0;
+  border: 1px solid var(--input-border);
+  background-color:var(--card-bg);
+  color: var(--card-text);
   font-size: 1rem;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -57,7 +57,7 @@
 .reserve-card input:focus,
 .reserve-card select:focus {
   outline: none;
-  border-color: #f19fc7;
+  border-color: var(--card-text);
   box-shadow: 0 0 8px rgba(241, 159, 199, 0.5);
 }
 
@@ -69,8 +69,8 @@
   font-weight: 600;
   border-radius: 12px;
   border: none;
-  color: #fff;
-  background: linear-gradient(135deg, #e35d6a, #c25751);
+  color: var(--button-text);
+  background: var(--button-bg);
   box-shadow: 0 6px 15px rgba(194, 87, 81, 0.5);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -78,7 +78,7 @@
 }
 
 .reserve-card .btn-danger:hover {
-  background: linear-gradient(135deg, #c25751, #a94442);
+  background:  var(--button-hover);
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(194, 87, 81, 0.6);
 }
@@ -95,8 +95,8 @@
   font-weight: 600;
   border-radius: 12px;
   border: none;
-  color: #f19fc7;
-  background: linear-gradient(135deg, #731c18, #5b1713);
+  color: var(--button-text);
+  background: var(--button-addMovie);
   box-shadow: 0 6px 15px rgba(115, 28, 24, 0.5);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -104,7 +104,7 @@
 }
 
 .reserve-card .btn-secondary:hover {
-  background: linear-gradient(135deg, #5b1713, #3f100f);
+  background: var(--button-addMovie-hover);
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(115, 28, 24, 0.6);
 }

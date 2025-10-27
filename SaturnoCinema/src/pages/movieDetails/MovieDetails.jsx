@@ -85,9 +85,12 @@ const MovieDetails = () => {
               <p>{hours}</p>
             </div>
 
-            <button className="details-button" onClick={() => setShowReserve(true)}>Reservar Tickets</button>
             <button className="details-button" onClick={clickHandle}>Volver</button>
 
+            {token && 
+              <button className="details-button" onClick={() => setShowReserve(true)}>Reservar Tickets</button>
+            }
+            
             {token && userType != 0 && (
               <button className="details-button" onClick={() => setShowEdit(true)}>Editar Pelicula</button>
             )}

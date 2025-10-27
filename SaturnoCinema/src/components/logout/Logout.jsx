@@ -6,7 +6,7 @@ const Logout = () => {
     const handleLogout = () => {
         localStorage.removeItem('token')
         alert('Sesion cerrada')
-        window.location.reload(true)
+        window.location.href = "/";
     }
 
     return (
