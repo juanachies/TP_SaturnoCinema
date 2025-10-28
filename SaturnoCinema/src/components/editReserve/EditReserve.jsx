@@ -1,18 +1,29 @@
-import { useState } from "react";
-import "./ReserveTickets.css";
-import Notification from "../notifications/Notifications"; 
+
+import { useState, useEffect } from "react";
+import "./ReserveTickets.css"; 
+import Notification from "../notifications/Notifications";
 
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
-const ReserveTickets = ({ showModal, onCloseModal, movieDetails }) => {
+const EditReserve = ({ showModal, onCloseModal, reservationData, movieDetails, onUpdateSuccess }) => {
+  
+
   const [selectedTime, setSelectedTime] = useState("");
   const [tickets, setTickets] = useState(1);
   const [notification, setNotification] = useState({ message: "", type: "" });
 
-  const pricePerTicket = 100;
+  const pricePerTicket = 100; 
   const total = pricePerTicket * tickets;
 
-  if (!showModal) return null;
+  
+  useEffect(() => {
+    if (reservationData) {
+      setSelectedTime(reservationData.hour);
+      setTickets(reservationData.tickets);
+    }
+  }, [reservationData]); 
+
+  if (!showModal) return null; 
 
   const showNotification = (message, type = "success") => {
     setNotification({ message, type });
@@ -20,55 +31,43 @@ const ReserveTickets = ({ showModal, onCloseModal, movieDetails }) => {
   };
 
   const handleCancel = () => {
-    setSelectedTime("");
-    setTickets(1);
-    onCloseModal();
+    onCloseModal(); 
   };
 
-  const handleReserve = async () => {
+  const handleUpdate = async () => {
     if (!selectedTime) {
       showNotification("Selecciona un horario", "error");
       return;
     }
 
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) {
-      showNotification("Debes iniciar sesión para reservar", "error");
-      return;
-    }
-
-    const reserva = {
-      userId: user.id,
-      movieId: movieDetails.id,
-      date: new Date().toISOString().split("T")[0],
+    const updatedReservation = {
+     
+      ...reservationData, 
+      
       hour: selectedTime,
-      tickets
+      tickets: tickets
     };
 
     try {
-      const res = await fetch(`${baseUrl}/reservations`, {
-        method: "POST",
+      const res = await fetch(`${baseUrl}/reservations/${reservationData.id}`, { 
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        body: JSON.stringify(reserva),
+        body: JSON.stringify(updatedReservation),
       });
 
-      if (!res.ok) throw new Error("Error en la reserva");
+      if (!res.ok) throw new Error("Error en la actualización");
 
-  
-      showNotification("Reserva completa", "success");
+      const data = await res.json();
+      showNotification("Reserva actualizada", "success");
       
+    
+      onUpdateSuccess(data); 
       
-      setTimeout(() => {
-        handleCancel();
-      }, 500);
-     
-
     } catch (err) {
       console.error(err);
-      showNotification("Error al reservar, intenta nuevamente", "error");
+      showNotification("Error al actualizar, intenta nuevamente", "error");
     }
   };
 
@@ -76,7 +75,7 @@ const ReserveTickets = ({ showModal, onCloseModal, movieDetails }) => {
     <>
       <div className="reserve-overlay">
         <div className="reserve-card">
-          <h2>Reservar Tickets</h2>
+          <h2>Editar Reserva</h2>
           <form onSubmit={(e) => e.preventDefault()}>
             <label>Selecciona horario:</label>
             <select
@@ -84,6 +83,7 @@ const ReserveTickets = ({ showModal, onCloseModal, movieDetails }) => {
               onChange={(e) => setSelectedTime(e.target.value)}
             >
               <option value="">Selecciona un horario</option>
+           
               {movieDetails.hours.map((hour) => (
                 <option key={hour} value={hour}>
                   {hour}
@@ -106,8 +106,8 @@ const ReserveTickets = ({ showModal, onCloseModal, movieDetails }) => {
               <button type="button" className="btn-secondary" onClick={handleCancel}>
                 Cancelar
               </button>
-              <button type="button" className="btn-danger" onClick={handleReserve}>
-                Confirmar reserva
+              <button type="button" className="btn-danger" onClick={handleUpdate}>
+                Confirmar cambios
               </button>
             </div>
           </form>
@@ -123,4 +123,4 @@ const ReserveTickets = ({ showModal, onCloseModal, movieDetails }) => {
   );
 };
 
-export default ReserveTickets;
+export default EditReserve;
