@@ -36,7 +36,7 @@ const UserItem = ({ user, onUserDeleted }) => {
 
       
       setShowConfirmModal(false);
-       window.location.reload(true)
+      
       if (onUserDeleted) onUserDeleted();
     } catch (error) {
       console.error(error);
