@@ -50,6 +50,11 @@ const Login = () => {
         .then((data) => { 
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
+           setNotification({ message: 'Sesión iniciada con éxito', type: 'success' }); 
+
+        setTimeout(() => {
+            window.location.href = "/";
+        }, 1000); 
 
         
         })
@@ -61,11 +66,7 @@ const Login = () => {
           }));
         });
       }
-      setNotification({ message: 'Sesión iniciada con éxito', type: 'success' }); 
-
-        setTimeout(() => {
-            window.location.href = "/";
-        }, 1000); 
+     
     }
 
 
