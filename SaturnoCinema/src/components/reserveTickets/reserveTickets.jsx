@@ -1,13 +1,25 @@
 import { useState } from "react";
 import "./ReserveTickets.css";
-import Notification from "../notifications/Notifications"; 
+import Notification from "../notifications/Notifications";
 
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 const ReserveTickets = ({ showModal, onCloseModal, movieDetails }) => {
   const [selectedTime, setSelectedTime] = useState("");
+  const [selectedDay, setSelectedDay] = useState("");
   const [tickets, setTickets] = useState(1);
   const [notification, setNotification] = useState({ message: "", type: "" });
+
+  const today = new Date();
+
+  const days = Array.from({ length: 5 }, (_, i) => {
+    const date = new Date();
+    date.setDate(today.getDate() + i);
+    return date;
+  });
+
+
+  // const days = [...today, today + 1];
 
   const pricePerTicket = 100;
   const total = pricePerTicket * tickets;
@@ -28,6 +40,11 @@ const ReserveTickets = ({ showModal, onCloseModal, movieDetails }) => {
   const handleReserve = async () => {
     if (!selectedTime) {
       showNotification("Selecciona un horario", "error");
+      return;
+    }
+
+    if (!selectedDay) {
+      showNotification("Selecciona un día", "error");
       return;
     }
 
@@ -57,14 +74,14 @@ const ReserveTickets = ({ showModal, onCloseModal, movieDetails }) => {
 
       if (!res.ok) throw new Error("Error en la reserva");
 
-  
+
       showNotification("Reserva completa", "success");
-      
-      
+
+
       setTimeout(() => {
         handleCancel();
       }, 500);
-     
+
 
     } catch (err) {
       console.error(err);
@@ -78,6 +95,23 @@ const ReserveTickets = ({ showModal, onCloseModal, movieDetails }) => {
         <div className="reserve-card">
           <h2>Reservar Tickets</h2>
           <form onSubmit={(e) => e.preventDefault()}>
+
+            <label>Selecciona día:</label>
+            <select
+              value={selectedDay}
+              onChange={(e) => setSelectedDay(e.target.value)}
+            >
+              <option value="">Selecciona un día</option>
+              {days.map((date) => {
+                const dateValue = date.toISOString().split("T")[0];
+                return(
+                  <option key={dateValue} value={dateValue}>
+                    {date.toLocaleDateString("es-ES")}
+                  </option>
+                );
+                })}
+            </select>
+
             <label>Selecciona horario:</label>
             <select
               value={selectedTime}
