@@ -27,6 +27,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  align-items: flex-start; 
 }
 
 .info-item {
@@ -38,6 +39,7 @@
 .info-item p {
   margin: 0;
   font-weight: 500;
+  text-align: left
 }
 
 .mini-title{
