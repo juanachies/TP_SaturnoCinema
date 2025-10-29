@@ -7,8 +7,8 @@ const router = Router()
 router.get('/reservations', verifyToken, findReservations)
 router.get('/user-reservations', verifyToken, findUserReservations)
 router.post('/reservations', verifyToken, createReservation)
-router.put('reservations', verifyToken, updateReservation)
-router.delete('/reservations', verifyToken, deleteReservation)
+router.put('/reservations/:id', verifyToken, updateReservation)
+router.delete('/reservations/:id', verifyToken, deleteReservation)
 
 
 export default router;

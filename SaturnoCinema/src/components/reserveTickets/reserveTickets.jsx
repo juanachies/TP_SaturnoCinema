@@ -57,7 +57,7 @@ const ReserveTickets = ({ showModal, onCloseModal, movieDetails }) => {
     const reserva = {
       userId: user.id,
       movieId: movieDetails.id,
-      date: new Date().toISOString().split("T")[0],
+      date: selectedDay,
       hour: selectedTime,
       tickets
     };
