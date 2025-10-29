@@ -75,7 +75,16 @@ const Dashboard = () => {
                         <Protected allowedTypes={[2]} >
                             <UsersGuide users={users} />
                         </Protected>
-                } />
+                        } 
+                />
+                <Route
+                    path='reservations'
+                    element={
+                        <Protected>
+                            <Reservations/>
+                        </Protected>
+                    }
+                />
                 <Route
                     path='*'
                     element={
