@@ -2,6 +2,7 @@ import { useState } from "react"
 import AuthContainer from "../authContainer/AuthContainer"
 import { useNavigate } from "react-router-dom"
 import { ValidateLogin } from "../Validations"
+import Notification from "../../components/notifications/Notifications"
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
 const Login = () => {
@@ -13,6 +14,9 @@ const Login = () => {
   })
 
   const [errors, setErrors] = useState({})
+
+  const [notification, setNotification] = useState({ message: "", type: "" });
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -46,10 +50,13 @@ const Login = () => {
         .then((data) => { 
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
+           setNotification({ message: 'Sesión iniciada con éxito', type: 'success' }); 
 
-          alert('Login exitoso'); 
-          navigate('/');
-          window.location.reload(true)
+        setTimeout(() => {
+            window.location.href = "/";
+        }, 1000); 
+
+        
         })
         .catch((err) => {
           console.log(err);
@@ -59,10 +66,12 @@ const Login = () => {
           }));
         });
       }
+     
     }
 
 
   return (
+    <>
     <AuthContainer>
       <div className="auth-container">
         <h2>INGRESA CON TU USUARIO</h2>
@@ -99,7 +108,15 @@ const Login = () => {
         </form>     
       </div>
     </AuthContainer>
+
+    <Notification
+                message={notification.message}
+                type={notification.type}
+                onClose={() => setNotification({ message: "", type: "" })}
+            />
+    </>
   )
+  
 }
 
 export default Login
