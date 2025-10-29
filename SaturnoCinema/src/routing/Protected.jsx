@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router";
 
-const Protected = ({ allowedTypes }) => {
+const Protected = ({ allowedTypes, children }) => {
     const token = localStorage.getItem("token");
     const user = JSON.parse(localStorage.getItem("user"));
     const userType = user?.type;
@@ -13,7 +13,7 @@ const Protected = ({ allowedTypes }) => {
         return <Navigate to="/nodisponible" replace />;
     }
 
-    return <Outlet />;
+    return children;
 };
 
 export default Protected;
