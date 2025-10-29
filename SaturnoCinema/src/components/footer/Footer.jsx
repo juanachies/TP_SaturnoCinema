@@ -11,7 +11,7 @@ const Footer = () => {
             <div className='info'>
                 <div className='cinema'>
                     <h3 className="footer-title">SATURNO CINEMA</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut aspernatur cupiditate iste minus. Nobis iure accusamus odit vel vero odio. Autem modi tempora ipsum, quasi sed corrupti dolores aperiam recusandae.</p>
+                    <p>La experiencia cinematográfica más retro de la ciudad. Desde 1985 llevando lo mejor del cine a tu vida con el estilo inconfundible de los años 80.</p>
                     <nav>
                         <a href="https://www.instagram.com/">Instagram</a>
                         <a href="https://www.facebook.com/">Facebook</a>

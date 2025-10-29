@@ -5,8 +5,9 @@ footer{
     color: var(--card-text);
 }
 
-p {
+.cinema p {
     margin: 0;
+    padding: 1.5rem 0;
 }
 
 .info{

@@ -2,6 +2,7 @@ p {
     color: var(--p);
     font-size: 1rem;
     text-indent: 1.2rem;
+    text-align: center;
 }
 
 .titulo {
