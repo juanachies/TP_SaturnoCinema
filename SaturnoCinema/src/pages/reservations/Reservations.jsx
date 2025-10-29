@@ -55,13 +55,13 @@ const Reservations = () => {
         <div className="reservations">
             <h1>RESERVAS</h1>
             <div>
-                {
+                { reservations.length > 0 ?
                     reservations.map((reservation) => (
                         <ReservationItem
                             key={reservation.id}
                             reservation={reservation}
                         />
-                    ))
+                    )) : <p>No tiene reservas todavía</p> 
                 }
             </div>
             
