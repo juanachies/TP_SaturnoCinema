@@ -61,7 +61,7 @@ const Reservations = () => {
                             key={reservation.id}
                             reservation={reservation}
                         />
-                    )) : <p>No tiene reservas todavía</p> 
+                    )) : <p className="reservas-p">No tiene reservas todavía</p> 
                 }
             </div>
             
