@@ -2,7 +2,7 @@ import './modifyUser.css'
 import { useState } from 'react'
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
-const ModifyUser = ({user, onClose}) => {
+const ModifyUser = ({user, onClose, onUserUpdated}) => {
 
     const token = localStorage.getItem("token");
     const [type, setType] = useState(user.type);
@@ -20,11 +20,13 @@ const ModifyUser = ({user, onClose}) => {
         });
 
         if (!res.ok) throw new Error('Error al actualizar usuario');
-        alert('Usuario actualizado correctamente');
+        const updatedUser = { ...user, type };
+        onUserUpdated(updatedUser);
+        // alert('Usuario actualizado correctamente');
         onClose(); // cerrar el formulario
         } catch (err) {
         console.error(err);
-        alert('Hubo un error al actualizar el usuario');
+        // alert('Hubo un error al actualizar el usuario');
         }
     };
 

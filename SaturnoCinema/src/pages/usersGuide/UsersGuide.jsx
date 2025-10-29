@@ -17,6 +17,13 @@
       showNotification("Usuario eliminado con éxito", "success");
     };
 
+    const handleUserUpdated = (updatedUser) => {
+      setUsers(prevUsers =>
+        prevUsers.map(u => u.id === updatedUser.id ? updatedUser : u)
+      );
+      showNotification("Usuario modificado con éxito", "success");
+    };
+
     return (
       <>
         <div className="users-guide">
@@ -27,6 +34,7 @@
                 key={user.id}
                 user={user}
                 onUserDeleted={() => handleUserDeleted(user.id)}
+                onUserUpdated={handleUserUpdated}
                 showNotification={showNotification} // para que UserItem pueda disparar notificaciones
               />
             )) : <p>No hay usuarios disponibles</p>}

@@ -6,7 +6,7 @@ import ConfirmModal from "../confirmModal/ConfirmModal";
 
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 
-const UserItem = ({ user, onUserDeleted }) => {
+const UserItem = ({ user, onUserDeleted, onUserUpdated }) => {
   const [showModify, setShowModify] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
@@ -72,7 +72,11 @@ const UserItem = ({ user, onUserDeleted }) => {
       </div>
 
       {showModify && (
-        <ModifyUser user={user} onClose={() => setShowModify(false)} />
+        <ModifyUser 
+          user={user}
+          onClose={() => setShowModify(false)}
+          onUserUpdated={onUserUpdated}
+        />
       )}
 
       {showConfirmModal && (
