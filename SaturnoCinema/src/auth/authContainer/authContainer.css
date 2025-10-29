@@ -1,5 +1,5 @@
 .auth{
-    background-color: #662d2b;
+    background-color: var(--header-backround);
     margin: 0;
     padding: 3rem;
     display: flex;
@@ -9,7 +9,7 @@
 }
 
 .auth-title{
-    color: #f19fc7;
+    color: var(--input-placeholder);
     font-weight: 700;
     font-size: 3rem;
 }
@@ -17,20 +17,20 @@
 .auth-container{
     padding: 2.5rem 3rem;
     margin: 1rem;
-    background-color: #200c0b;
-    color: #f19fc7;
-    border: 2px solid #c25751;
+    background-color: var(--card-bg);
+    color:var( --card-text);
+    border: 2px solid var(--border-color);
     border-radius: 15px;
     width: 35rem;
 }
 
 .auth-container h2{
     font-size: 1.5rem;
-    color: #c25751;
+    color: var(--button-bg);
     width: 100%;
     padding-bottom: 1rem;
     margin-bottom: 2rem;
-    border-bottom: 1px solid #c25751;
+    border-bottom: 1px solid var(--button-bg);
     text-align: center;
 }
 
@@ -47,18 +47,18 @@
 
 .auth-inputs input{
     border-radius: 10px;
-    border: 2px solid #7d3a34;
-    background-color: #4c1d1a;
+    border: 2px solid var( --input-border);
+    background-color: var(--input-bg);
     padding: 0.2rem 1rem;
     transition: all 0.5s ease;
 }
 .auth-inputs input::placeholder {
-    color: #f19fc7;
+    color: var(--input-placeholder);
 }
 .auth-inputs input:focus {
     outline: none;
-    box-shadow: 0 0 8px #7d3a34;
-    border-color: #7d3a34;
+    box-shadow: 0 0 8px var(--input-border);
+    border-color:var(--input-border);
 }
 
 .auth-row{
@@ -71,8 +71,8 @@
 }
 
 .auth-container button{
-    background-color: #c25751;
-    color: #f19ec4;
+    background-color: var(--button-bg);
+    color: var(--button-text);
     font-weight: 500;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
@@ -82,11 +82,11 @@
 }
 
 .auth-container button:hover {
-    background-color: #a94442;
+    background-color: var(--button-hover);
 }
 
 .auth-checkbox{
-    color: #f19fc7;
+    color: var(--button-text);
     display: flex;
     align-items: center;
     gap: 0.5rem;

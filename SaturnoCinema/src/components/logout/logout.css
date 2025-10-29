@@ -1,8 +1,8 @@
 .logout{
     padding: 0.1rem 1rem;
     margin: 0.5rem;
-    color: #6680AB;
-    background-color: #4c1d1a;
+    color: var(--logout-text);
+    background-color: var( --logout-background-color);
     font-weight: 500;
     border-radius: 15px;
     border: none;
@@ -10,5 +10,5 @@
 }
 
 .logout:hover {
-    color: rgb(130, 147, 172);
+    color: var(--logout-hover);
 }

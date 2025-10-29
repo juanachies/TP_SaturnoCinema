@@ -12,13 +12,13 @@ img {
 }
 
 .titulo-logo {
-    color: #c25751;
+    color:var(--titulo-logo);
     font-size: 2rem;
     font-weight: 800;
 }
 
 .subtitulo-logo {
-    color: #709F51;
+    color: var(--subtitulo-logo);
     font-weight: 700;
     /* padding-bottom: 1rem; */
 }

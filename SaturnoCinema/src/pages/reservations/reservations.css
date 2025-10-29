@@ -1,5 +1,5 @@
 .reservations{
-    background-color: #662d2b;
+    background-color: var(--header-backround);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;

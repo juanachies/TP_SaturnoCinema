@@ -1,5 +1,5 @@
 .users-guide{
-    background-color: #662d2b;
+    background-color: var(--header-backround);
     padding: 1.5rem;
     display: flex;
     gap: 2rem;
@@ -18,7 +18,7 @@
 
 .users-title{
     text-align: center;
-    color: #c25751;
+    color: var(--titulo-logo);
     font-size: 3rem;
     font-weight: 900;
 }
@@ -28,6 +28,6 @@
     display: block;
     width: 90px;
     height: 4px;
-    background-color: #6a944f;
+    background-color: var(--subtitulo-logo);
     margin: 0.5rem auto 0;
 }
