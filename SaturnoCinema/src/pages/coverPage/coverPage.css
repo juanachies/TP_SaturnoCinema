@@ -1,7 +1,8 @@
-p {
-    color: #f1f1f1;
+.bg-image p {
+    color:rgba(255,255,255,0.5);
     font-size: 1rem;
     text-indent: 1.2rem;
+    text-align: center;
 }
 
 .titulo {
@@ -35,4 +36,13 @@ p {
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
+    color: #f19ec4;
+    background-color: #c25751;
+    border: none;
+    transition: background-color 0.5s ease;
+}
+
+.btn-cover:hover {
+    color: #f19ec4;
+    background-color: #a94442;
 }
