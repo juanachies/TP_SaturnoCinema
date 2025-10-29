@@ -5,8 +5,10 @@ img {
 
 .logo-style {
     display: flex;
-    justify-content: start;
-    gap: 5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 0.5rem;
 }
 
 .titulo-logo {

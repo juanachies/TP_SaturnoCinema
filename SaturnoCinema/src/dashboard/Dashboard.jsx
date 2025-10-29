@@ -9,6 +9,7 @@ import MovieDetails from '../pages/movieDetails/MovieDetails'
 import Contact from '../pages/contacto/contactForm'
 import UsersGuide from '../pages/usersGuide/UsersGuide'
 import Protected from '../routing/Protected'
+import Reservations from '../pages/reservations/Reservations'
 import { useState, useEffect } from 'react'
 import "./dashboard.css";
 import NotFound from '../components/notFound/NotFound'
@@ -75,7 +76,16 @@ const Dashboard = () => {
                         <Protected allowedTypes={[2]} >
                             <UsersGuide users={users} />
                         </Protected>
-                } />
+                        } 
+                />
+                <Route
+                    path='reservations'
+                    element={
+                        <Protected>
+                            <Reservations/>
+                        </Protected>
+                    }
+                />
                 <Route
                     path='*'
                     element={
