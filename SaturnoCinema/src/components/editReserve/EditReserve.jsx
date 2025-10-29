@@ -8,7 +8,7 @@ function EditReserve({ showModal, onCloseModal, reservationData, movies, onUpdat
   
   useEffect(() => {
     if (reservationData) {
-      // AQUÍ LA CORRECCIÓN: Se usa '?.toString()'
+      
       setSelectedMovieId(reservationData?.movie?.id?.toString() || "");
       setSelectedTime(reservationData.hour || "");
       setTickets(reservationData.tickets || 1);
@@ -40,7 +40,7 @@ function EditReserve({ showModal, onCloseModal, reservationData, movies, onUpdat
     }
     
     const numericMovieId = parseInt(selectedMovieId, 10);
-    // Aseguramos que 'movies' sea un array antes de usar 'find'
+   
     const updatedMovie = (movies || []).find(m => m.id === numericMovieId);
 
     onUpdateSuccess({
@@ -56,14 +56,14 @@ function EditReserve({ showModal, onCloseModal, reservationData, movies, onUpdat
     return null;
   }
 
-  // Aseguramos que 'movies' sea un array antes de usar 'find'
+  
   const movieArray = movies || [];
   const selectedMovieDetails = movieArray.find(m => m.id.toString() === selectedMovieId);
   const availableTimes = selectedMovieDetails?.hours || [];
   
   const timeOptions = new Set(availableTimes);
   
-  // AQUÍ LA CORRECCIÓN: Se usa '?.toString()'
+ 
   if (reservationData?.hour && reservationData?.movie?.id?.toString() === selectedMovieId) {
     timeOptions.add(reservationData.hour);
   }
@@ -107,7 +107,7 @@ function EditReserve({ showModal, onCloseModal, reservationData, movies, onUpdat
             {sortedTimes.map(time => (
               <option key={time} value={time}>
                 {time}
-                {/* AQUÍ LA CORRECCIÓN: Se usa '?.toString()' */}
+               
                 {reservationData?.hour === time && 
                  reservationData?.movie?.id?.toString() === selectedMovieId &&
                  !availableTimes.includes(time) && 
