@@ -41,7 +41,7 @@ const Movie = sequelize.define('movie', {
     },
     hours: {
         type: DataTypes.JSON,
-        allowNull: true, // cambiar despues a false
+        allowNull: false, 
     }
 }, {timestamps: false});
 
