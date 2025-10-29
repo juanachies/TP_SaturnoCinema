@@ -1,19 +1,19 @@
 import { Navigate, Outlet } from "react-router";
 
-const Protected = ({children, allowedTypes}) => {
+const Protected = ({ allowedTypes }) => {
     const token = localStorage.getItem("token");
     const user = JSON.parse(localStorage.getItem("user"));
-    const userType = user?.type
+    const userType = user?.type;
 
-    if (!token){
-        return <Navigate to='/login' replace />
+    if (!token) {
+        return <Navigate to="/login" replace />;
     }
 
     if (allowedTypes && !allowedTypes.includes(userType)) {
-        return <Navigate to="/" />;
+        return <Navigate to="/nodisponible" replace />;
     }
 
-    return children;
-}
+    return <Outlet />;
+};
 
-export default Protected
+export default Protected;

@@ -69,7 +69,6 @@ const Dashboard = () => {
                 <Route path='register' element={<Register/>} />
                 <Route path='movies/:id' element={<MovieDetails />} />
                 <Route path='contacto' element={<Contact />} />
-                <Route path='users' element={<UsersGuide users={users} />} />
                 <Route 
                     path='users' 
                     element={
