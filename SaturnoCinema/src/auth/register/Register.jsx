@@ -48,16 +48,13 @@ const Register = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-         
-
           if (data.token) {
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
-            //navigate("/");
-             setNotification({
-            message: "Sesión iniciada con éxito",
-            type: "success",
-          });
+            setNotification({
+              message: "Sesión iniciada con éxito",
+              type: "success",
+            });
 
           setTimeout(() => {
             window.location.href = "/";
