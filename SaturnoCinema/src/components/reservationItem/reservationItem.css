@@ -15,7 +15,7 @@
 }
 
 .reservation-item button{
-    background-color: var(--input-bg);
+    background-color: var(--button-bg);
     border: none;
     border-radius: 15px;
     color: var(--button-text);
