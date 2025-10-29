@@ -1,126 +1,145 @@
+import React, { useState, useEffect } from 'react';
 
-import { useState, useEffect } from "react";
-import "./ReserveTickets.css"; 
-import Notification from "../notifications/Notifications";
-
-const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
-
-const EditReserve = ({ showModal, onCloseModal, reservationData, movieDetails, onUpdateSuccess }) => {
+function EditReserve({ showModal, onCloseModal, reservationData, movies, onUpdateSuccess }) {
   
-
+  const [selectedMovieId, setSelectedMovieId] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [tickets, setTickets] = useState(1);
-  const [notification, setNotification] = useState({ message: "", type: "" });
-
-  const pricePerTicket = 100; 
-  const total = pricePerTicket * tickets;
-
   
   useEffect(() => {
     if (reservationData) {
-      setSelectedTime(reservationData.hour);
-      setTickets(reservationData.tickets);
+      // AQUÍ LA CORRECCIÓN: Se usa '?.toString()'
+      setSelectedMovieId(reservationData?.movie?.id?.toString() || "");
+      setSelectedTime(reservationData.hour || "");
+      setTickets(reservationData.tickets || 1);
+    } else {
+      setSelectedMovieId("");
+      setSelectedTime("");
+      setTickets(1);
     }
   }, [reservationData]); 
 
-  if (!showModal) return null; 
-
-  const showNotification = (message, type = "success") => {
-    setNotification({ message, type });
-    setTimeout(() => setNotification({ message: "", type: "" }), 3000);
+  const handleMovieChange = (e) => {
+    setSelectedMovieId(e.target.value);
+    setSelectedTime("");
   };
 
-  const handleCancel = () => {
-    onCloseModal(); 
+  const handleTimeChange = (e) => {
+    setSelectedTime(e.target.value);
   };
 
-  const handleUpdate = async () => {
-    if (!selectedTime) {
-      showNotification("Selecciona un horario", "error");
+  const handleTicketsChange = (e) => {
+    setTickets(parseInt(e.target.value, 10));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!selectedMovieId || !selectedTime) {
+      alert("Por favor, selecciona una película y un horario.");
       return;
     }
-
-    const updatedReservation = {
-     
-      ...reservationData, 
-      
-      hour: selectedTime,
-      tickets: tickets
-    };
-
-    try {
-      const res = await fetch(`${baseUrl}/reservations/${reservationData.id}`, { 
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify(updatedReservation),
-      });
-
-      if (!res.ok) throw new Error("Error en la actualización");
-
-      const data = await res.json();
-      showNotification("Reserva actualizada", "success");
-      
     
-      onUpdateSuccess(data); 
-      
-    } catch (err) {
-      console.error(err);
-      showNotification("Error al actualizar, intenta nuevamente", "error");
-    }
+    const numericMovieId = parseInt(selectedMovieId, 10);
+    // Aseguramos que 'movies' sea un array antes de usar 'find'
+    const updatedMovie = (movies || []).find(m => m.id === numericMovieId);
+
+    onUpdateSuccess({
+      ...reservationData,
+      hour: selectedTime,
+      tickets: tickets,
+      movieId: numericMovieId,
+      movie: updatedMovie,
+    });
   };
 
+  if (!showModal) {
+    return null;
+  }
+
+  // Aseguramos que 'movies' sea un array antes de usar 'find'
+  const movieArray = movies || [];
+  const selectedMovieDetails = movieArray.find(m => m.id.toString() === selectedMovieId);
+  const availableTimes = selectedMovieDetails?.hours || [];
+  
+  const timeOptions = new Set(availableTimes);
+  
+  // AQUÍ LA CORRECCIÓN: Se usa '?.toString()'
+  if (reservationData?.hour && reservationData?.movie?.id?.toString() === selectedMovieId) {
+    timeOptions.add(reservationData.hour);
+  }
+  const sortedTimes = Array.from(timeOptions).sort();
+
   return (
-    <>
-      <div className="reserve-overlay">
-        <div className="reserve-card">
-          <h2>Editar Reserva</h2>
-          <form onSubmit={(e) => e.preventDefault()}>
-            <label>Selecciona horario:</label>
-            <select
-              value={selectedTime}
-              onChange={(e) => setSelectedTime(e.target.value)}
-            >
-              <option value="">Selecciona un horario</option>
-           
-              {movieDetails.hours.map((hour) => (
-                <option key={hour} value={hour}>
-                  {hour}
-                </option>
-              ))}
-            </select>
+    <div className="reserve-overlay" onClick={onCloseModal}> 
+      <div className="reserve-card" onClick={(e) => e.stopPropagation()}> 
+        
+        <h2>Editar Reserva</h2>
+        
+        <form onSubmit={handleSubmit}>
+          
+          <label htmlFor="movie-select">Película:</label>
+          <select
+            id="movie-select"
+            value={selectedMovieId}
+            onChange={handleMovieChange}
+            required
+          >
+            <option value="" disabled>Selecciona una película</option>
+            {movieArray.map(movie => (
+              <option key={movie.id} value={movie.id.toString()}>
+                {movie.title}
+              </option>
+            ))}
+          </select>
 
-            <label>Cantidad de tickets:</label>
-            <input
-              type="number"
-              min="1"
-              max="10"
-              value={tickets}
-              onChange={(e) => setTickets(Number(e.target.value))}
-            />
+          <label htmlFor="time-select">Horario:</label>
+          <select
+            id="time-select"
+            value={selectedTime}
+            onChange={handleTimeChange}
+            required
+            disabled={!selectedMovieId} 
+          >
+            <option value="" disabled>
+              {availableTimes.length > 0 ? "Selecciona un horario" : (selectedMovieId ? "No hay horarios" : "Elige una película")}
+            </option>
+            
+            {sortedTimes.map(time => (
+              <option key={time} value={time}>
+                {time}
+                {/* AQUÍ LA CORRECCIÓN: Se usa '?.toString()' */}
+                {reservationData?.hour === time && 
+                 reservationData?.movie?.id?.toString() === selectedMovieId &&
+                 !availableTimes.includes(time) && 
+                 " (horario original)"}
+              </option>
+            ))}
+          </select>
+          
+          <label htmlFor="tickets-input">Entradas:</label>
+          <input
+            id="tickets-input"
+            type="number"
+            value={tickets}
+            onChange={handleTicketsChange}
+            min="1"
+            max="10"
+            required
+          />
 
-            <p>Total ${total}</p>
-
-            <div className="button-group">
-              <button type="button" className="btn-secondary" onClick={handleCancel}>
-                Cancelar
-              </button>
-              <button type="button" className="btn-danger" onClick={handleUpdate}>
-                Confirmar cambios
-              </button>
-            </div>
-          </form>
-        </div>
+          <div className="button-group">
+            <button type="button" onClick={onCloseModal} className="btn-secondary">
+              Cancelar
+            </button>
+            <button type="submit" className="btn-danger" disabled={!selectedTime || !selectedMovieId}>
+              Actualizar Reserva
+            </button>
+          </div>
+          
+        </form>
       </div>
-
-      <Notification
-        message={notification.message}
-        type={notification.type}
-        onClose={() => setNotification({ message: "", type: "" })}
-      />
-    </>
+    </div>
   );
-};
+}
 
 export default EditReserve;
