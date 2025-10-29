@@ -2,7 +2,7 @@
 .confirm-modal .modal-content {
   border-radius: 18px;
   border: none;
-  background: #1e1e1e;
+  background: var(--card-bg);
   color: #fff;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
   overflow: hidden;
@@ -38,7 +38,7 @@
 
 
 .confirm-modal-header {
-  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  background: var(--header-backround);
   color: white;
   border: none;
   padding: 1rem 1.2rem;
@@ -52,11 +52,11 @@
 .confirm-modal-body {
   text-align: center;
   padding: 2rem 1.2rem;
-  background: #292929;
+  background: var( --input-bg);
   color: #f2f2f2;
   font-size: 1.1rem;
-  border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   letter-spacing: 0.3px;
   box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
 }
@@ -71,7 +71,7 @@
   justify-content: center;
   gap: 1rem;
   padding: 1.3rem;
-  background: #1b1b1b;
+  background: var(--header-backround);
   border: none;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .btn-confirm {
-  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  background: linear-gradient(135deg, var(--button-addMovie), var(--input-placeholder));
   border: none;
   color: #fff;
   font-weight: 600;

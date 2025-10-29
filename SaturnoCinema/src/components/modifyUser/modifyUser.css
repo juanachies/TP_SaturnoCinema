@@ -12,13 +12,26 @@
 }
 
 .modal-content {
-    background: #4c1d1a;
-    border: 2px solid #c25751;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
     padding: 2rem;
+    color: var(--card-text);
     border-radius: 12px;
     width: 450px;
     max-width: 90%;
     text-align: center;
+}
+
+.modal-content select {
+    width: 50%;
+    padding: 0.6rem 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--input-border);
+    background-color:var(--input-bg);
+    color: var(--card-text);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .actions {
@@ -28,8 +41,19 @@
 }
 
 .actions button {
-    width: 12rem;
-    padding: 8px 16px;
+    background-color: var(--button-bg);
+    color:var(--button-text);
+    font-weight: 450;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
     border: none;
-    border-radius: 12px;
+    width: 100%;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+.actions button:hover {
+  background-color:var(--button-hover);
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }

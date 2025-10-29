@@ -3,9 +3,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: #f19fc7;
-    border: 2px solid #7d3a34;
-    background-color: #4c1d1a;
+    color: var(--input-placeholder);
+    border: 2px solid var(--border-color);
+    background-color: var(--input-bg);
     padding: 1rem 2rem;
     border-radius: 15px;
 }
@@ -15,15 +15,15 @@
 }
 
 .reservation-item button{
-    background-color: #c25751;
+    background-color: var(--button-bg);
     border: none;
     border-radius: 15px;
-    color: #f19ec4;
+    color: var(--button-text);
     font-weight: 500;
     padding: 0.2rem 0.8rem;
     transition: background-color 0.3s ease;
 }
 
 .reservation-item button:hover{
-    background-color: #a94442;
+    background-color: var(--button-hover);
 }
