@@ -3,6 +3,7 @@ import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import { validateMovie } from "../../auth/Validations";
 const baseUrl = import.meta.env.VITE_BASE_SERVER_URL;
 import "./newMovie.css";
+import "../theme/themes.css"
 
 const NewMovie = ({onMovieAdded, show, onClose}) => {
     const [movieData, setMovieData] = useState({

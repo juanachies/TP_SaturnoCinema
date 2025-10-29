@@ -1,5 +1,5 @@
 .movie-listing{
-    background-color: #662d2b;
+    background-color:var(--header-backround);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@
 
 .movie-listing-title{
     text-align: center;
-    color: #c25751;
+    color: var(--titulo-logo);
     font-size: 3rem;
     font-weight: 900;
 }
@@ -32,8 +32,8 @@
 }
 
 .add-button{
-    background-color: #731c18;
-    color: #f19ec4;
+    background-color: var(--button-addMovie);
+    color: var(--button-text);
     font-weight: 500;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
@@ -43,5 +43,7 @@
 }
 
 .add-button:hover {
-    background-color: #5b1713;
+    background-color:var(--button-addMovie-hover);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }

@@ -43,7 +43,7 @@ export const updateMovie = async (req, res) => {
     const {id} = req.params;
     const {title, director, year, genre, runtime, rating, imageUrl, plot, hours} = req.body;
 
-    const movie = await Movies.findByPk(id);
+    const movie = await Movie.findByPk(id);
 
     if (!movie)
         return res.status(404).send({message: 'Movie not found'})

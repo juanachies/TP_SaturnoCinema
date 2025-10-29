@@ -1,12 +1,12 @@
 .movie-details-page {
-  background-color: #4c1d1a;
+  background-color: var(--header-backround);
   padding: 2rem 10rem;
-  color: #f19fc7;
+  color:var(--input-placeholder);
 }
 
 
 .movie-details-page h1{
-  color: #c25751;
+  color:var(--titulo-logo);
   font-weight: 700;
   font-size: 2rem;
   padding-bottom: 1rem;
@@ -41,18 +41,18 @@
 }
 
 .mini-title{
-  color: #dddddd94;
+  color:var(--input-placeholder);
   font-size: 0.8rem;
 }
 
 .sinopsis h2 {
-  color: #c25751;
+  color: var(--titulo-logo);
   margin-top: 1.5rem;
   font-size: 1.8rem;
 }
 
 .details-button{
-  color: #f19ec4;
+  color:var(--button-text);
   text-transform: uppercase;
   font-weight: 500;
   padding: 0.3rem 0.8rem;
@@ -63,25 +63,31 @@
 }
 
 .details-button:nth-of-type(1){
-  background-color: #c25751;
+  background-color: var(--button-bg);
 }
 
 .details-button:nth-of-type(2){
-  background-color: #c25751 
+  background-color: var(--button-bg) 
 }
 
 .details-button:nth-of-type(3){
-  background-color: #731c18;
+  background-color: var(--button-addMovie);
 }
 
 .details-button:nth-of-type(1):hover {
-  background-color: #a94442;
+  background-color: var(--button-hover);
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .details-button:nth-of-type(2):hover {
-  background-color: #a94442;
+  background-color: var(--button-hover);
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .details-button:nth-of-type(3):hover {
-  background-color: #5b1713;
+  background-color: var(--button-addMovie-hover);
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }

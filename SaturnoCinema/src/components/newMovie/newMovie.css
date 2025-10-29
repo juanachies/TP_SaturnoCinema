@@ -22,9 +22,9 @@
 .new-movie-card {
  padding: 2.5rem 3rem;
     margin: 1rem;
-    background-color: #200c0b;
-    color: #f19fc7;
-    border: 2px solid #c25751;
+    background-color: var(--card-bg);
+    color: var(--card-text);
+    border: 2px solid var(--border-color);
     border-radius: 15px;
     width: 35rem;
 }
@@ -38,33 +38,33 @@
 .new-movie-inputs{
     display: flex;
     flex-direction: column;
-    color:#e294b7
+    color:var(--card-text)
 }
 
 .new-movie-inputs input{
     
     border-radius: 10px;
-    border: 2px solid #7d3a34;
-    background-color: #4c1d1a;
+    border: 2px solid var(--input-border);
+    background-color:var(--input-bg);
     padding: 0.2rem 1rem;
     transition: all 0.5s ease;
 }
 .new-movie-inputs input::placeholder {
-    color: #f19fc7;
+    color: var(--input-placeholder);
 }
 .new-movie-inputs input:focus {
     outline: none;
-    box-shadow: 0 0 8px #7d3a34;
-    border-color: #7d3a34;
+    box-shadow: 0 0 8px var(--input-border);
+    border-color: var(--input-focus-color);
 }
 
 .errors{
-    color: rgb(176, 9, 9);
+    color: var(--error-color);
 }
 
 .new-movie-card button{
-    background-color: #c25751;
-    color: #e294b7;
+    background-color: var(--button-bg);
+    color:var(--button-text);
     font-weight: 500;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
@@ -76,7 +76,7 @@
 }
 
 .new-movie-card button:hover {  
-  background-color: #a94442;
+  background-color:var(--button-hover);
   transform: scale(1.1);
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }

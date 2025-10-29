@@ -1,5 +1,5 @@
 .gallery{
-    background-color: #662d2b;
+    background-color: var(--header-backround);
     padding: 4rem;
     display: flex;
     flex-direction: column;
@@ -9,7 +9,7 @@
 
 .gallery h1{
     text-align: center;
-    color: #c25751;
+    color:var( --titulo-cover-page);
     font-size: 2rem;
     font-weight: 900;
 }

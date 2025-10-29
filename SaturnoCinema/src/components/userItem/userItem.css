@@ -1,10 +1,10 @@
 .user{
     border-radius: 8px;
-    border: 2px solid #c25751;
-    color: #dddddd94;
+    border: 2px solid var(--border-color);
+    color: var(--card-text);
     width: 20rem;
     padding: 1rem;
-    background-color: #75342f;
+    background-color:var( --card-bg);
 }
 
 .user h3{
@@ -26,8 +26,8 @@
 
 .user button{
     width: 40%;
-    background-color: #731c18;
-    color: #f19ec4;
+    background-color: var(--button-bg);
+    color: var(--button-text);
     font-weight: 500;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
@@ -37,5 +37,7 @@
 }
 
 .user button:hover{
-    background-color: #5b1713;
+    background-color:var(--button-hover);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
